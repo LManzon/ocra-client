@@ -1,6 +1,7 @@
 import React from "react";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts"
+import * as OBJECTIVES_SERVICE from "../../services/objective.service"
 
 function Objectives(props) {
   const [form, setForm] = React.useState({
@@ -24,7 +25,18 @@ function Objectives(props) {
   function handleSubmit(event) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
-  }
+  
+
+    OBJECTIVES_SERVICE.ADD_OBJECTIVE(form, accessToken)
+      .then((response) => {
+        console.log("response:", response);
+        props.history.push(`${PATHS.OBJECTIVES_PAGE}/${response.data.objectives._id}`);
+      })
+      .catch((err) => {
+        //console.error("err:", err.response);
+      });
+
+}
 
   return (
     <div>
