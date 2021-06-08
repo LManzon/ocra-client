@@ -4,3 +4,5 @@ export const CAPITALIZED_APP =
   APP_NAME[0].toUpperCase() + APP_NAME.slice(1).toLowerCase();
 
 export const URL = process.env.REACT_APP_SERVER_URL;
+
+export const SERVER_URL = URL ? URL : `http://localhost:5000/api`;
