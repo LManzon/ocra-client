@@ -6,10 +6,12 @@ import * as PATHS from "../utils/paths";
 
 export default function Signup({ authenticate, history }) {
   const [form, setForm] = useState({
-    username: "",
+    name: "",
+    surname: "",
+    email: "",
     password: "",
   });
-  const { username, password } = form;
+  const { name, surname, email, password } = form;
   const [error, setError] = useState(null);
 
   function handleInputChange(event) {
@@ -20,7 +22,9 @@ export default function Signup({ authenticate, history }) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const credentials = {
-      username,
+      name,
+      surname,
+      email,
       password,
     };
     signup(credentials).then((res) => {
@@ -42,13 +46,33 @@ export default function Signup({ authenticate, history }) {
     <div>
       <h1>Sign Up</h1>
       <form onSubmit={handleFormSubmission} className="auth__form">
-        <label htmlFor="input-username">Username</label>
+        <label htmlFor="input-name">Name</label>
         <input
-          id="input-username"
+          id="input-name"
           type="text"
-          name="username"
-          placeholder="Text"
-          value={username}
+          name="name"
+          placeholder="Luca"
+          value={name}
+          onChange={handleInputChange}
+          required
+        />
+        <label htmlFor="input-surname">Surname</label>
+        <input
+          id="input-surname"
+          type="text"
+          name="surname"
+          placeholder="Manzon"
+          value={surname}
+          onChange={handleInputChange}
+          required
+        />
+        <label htmlFor="input-email">email</label>
+        <input
+          id="input-email"
+          type="email"
+          name="email"
+          placeholder="info@ocra.com"
+          value={email}
           onChange={handleInputChange}
           required
         />
