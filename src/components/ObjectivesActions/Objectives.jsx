@@ -4,6 +4,7 @@ import * as CONSTS from "../../utils/consts"
 import * as OBJECTIVES_SERVICE from "../../services/objective.service"
 
 function Objectives(props) {
+
   const [form, setForm] = React.useState({
     problem: "",
     objectiveInput: "",
@@ -25,7 +26,7 @@ function Objectives(props) {
   function handleSubmit(event) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
-  
+
 
     OBJECTIVES_SERVICE.ADD_OBJECTIVE(form, accessToken)
       .then((response) => {
@@ -36,7 +37,7 @@ function Objectives(props) {
         //console.error("err:", err.response);
       });
 
-}
+  }
 
   return (
     <div>
@@ -113,13 +114,18 @@ function Objectives(props) {
 
         <label>Share with</label>
 
-        <input type="email" name="sharedWithUser" 
+        <input type="email" name="sharedWithUser"
 
-onChange={handleChange}
-value={form.sharedWithUser}
+          onChange={handleChange}
+          value={form.sharedWithUser}
         />
 
+
         <button type="submit">Create Goal</button>
+
+
+
+
       </form>
     </div>
   );
