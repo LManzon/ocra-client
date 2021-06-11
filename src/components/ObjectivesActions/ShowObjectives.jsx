@@ -45,7 +45,7 @@ function ShowObjectives(props) {
                 console.error("err:", err.response);
             });
 
-    } 
+    }
 
 
     function handleKeyDown(event) {
