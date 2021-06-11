@@ -12,3 +12,12 @@ export function ADD_OBJECTIVE(body, token) {
       },
     });
   }
+
+
+  export function EDIT_OBJECTIVE(body, token) {
+    return ObjectiveService.post("/edit", body, {
+      headers: {
+        authorization: token,
+      },
+    });
+  }

@@ -10,6 +10,7 @@ function HomePage() {
 
 
         <Objectives></Objectives>
+<br></br>
         <ShowObjectives></ShowObjectives>
 
       </header>

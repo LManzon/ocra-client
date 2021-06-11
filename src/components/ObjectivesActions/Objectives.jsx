@@ -3,7 +3,10 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts"
 import * as OBJECTIVES_SERVICE from "../../services/objective.service"
 
+
 function Objectives(props) {
+
+
 
   const [form, setForm] = React.useState({
     problem: "",
@@ -15,6 +18,9 @@ function Objectives(props) {
     visibility: "",
     sharedWithUser: "",
   });
+
+
+
 
   function handleChange(event) {
     setForm({
@@ -28,13 +34,15 @@ function Objectives(props) {
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
 
+
+
     OBJECTIVES_SERVICE.ADD_OBJECTIVE(form, accessToken)
       .then((response) => {
         console.log("response:", response);
         props.history.push(`${PATHS.OBJECTIVES_PAGE}/${response.data.objectives._id}`);
       })
       .catch((err) => {
-        //console.error("err:", err.response);
+        console.error("err:", err.response);
       });
 
   }
@@ -125,10 +133,12 @@ function Objectives(props) {
 
 
 
-
       </form>
     </div>
   );
 }
+
+
+
 
 export default Objectives;
