@@ -39,11 +39,13 @@ function ShowObjectives(props) {
         OBJECTIVES_SERVICE.EDIT_OBJECTIVE(form, accessToken)
             .then((response) => {
                 console.log("response:", response);
-                props.history.push(`${PATHS.OBJECTIVES_PAGE}/${response.data.objectives._id}`);
+                props.history.push(`${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`);
             })
             .catch((err) => {
                 console.error("err:", err.response);
             });
+
+
 
     }
 
@@ -95,7 +97,7 @@ function ShowObjectives(props) {
                             name="objectiveInput"
                             placeholder="and I want to change Y"
                             onKeyDown={handleKeyDown}
-                            defaultValue={form.objectiveInput}
+                            defaultValue={objective.objectiveInput}
                         />
 
                         <input
@@ -103,25 +105,25 @@ function ShowObjectives(props) {
                             name="keyResult"
                             placeholder="X number/value for objective"
                             onKeyDown={handleKeyDown}
-                            defaultValue={form.keyResult}
+                            defaultValue={objective.keyResult}
                         />
 
                         <input
                             type="date"
                             name="objectiveEndDate"
                             onKeyDown={handleKeyDown}
-                            defaultValue={form.objectiveEndDate}
+                            defaultValue={objective.objectiveEndDate}
                         />
 
                         <input
                             type="text"
                             name="action"
                             onKeyDown={handleKeyDown}
-                            defaultValue={form.action}
+                            defaultValue={objective.action}
                         />
 
 
-                        <select name="category" onKeyDown={handleKeyDown} defaultValue={form.category}>
+                        <select name="category" onKeyDown={handleKeyDown} defaultValue={objective.category}>
                             <option name="Career">Career</option>
                             <option name="Passion">Passion</option>
                             <option name="Relationship">Relationship</option>
@@ -135,7 +137,7 @@ function ShowObjectives(props) {
                         <select
                             name="visibility"
                             onKeyDown={handleKeyDown}
-                            defaultValue={form.visibility}
+                            defaultValue={objective.visibility}
                         >
                             <option name="Public">Public</option>
                             <option name="Private">Private</option>
@@ -145,7 +147,7 @@ function ShowObjectives(props) {
                         <input type="email" name="sharedWithUser"
 
                             onKeyDown={handleKeyDown}
-                            defaultValue={form.sharedWithUser}
+                            defaultValue={objective.sharedWithUser}
                         />
 
 
