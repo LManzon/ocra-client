@@ -4,35 +4,30 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVES_SERVICE from "../../services/objective.service";
 import { Link } from "react-router-dom";
-import ReactDOM from "react-dom";
 
-function ShowObjectives(props) {
-  const [listOfObjectives, setListOfObjectives] = React.useState([]);
-  const { user, authenticate } = props;
-
+function EditObjective(props) {
   const [form, setForm] = React.useState({
-    problem: "",
-    objectiveInput: "",
-    keyResult: "",
-    objectiveEndDate: "",
-    action: "",
-    category: "",
-    visibility: "",
-    sharedWithUser: "",
+    problem: props.problem,
+    objectiveInput: props.objectiveInput,
+    keyResult: props.keyResult,
+    objectiveEndDate: props.objectiveEndDate || "",
+    category: props.category,
+    visibility: props.visibility,
+    // sharedWithUser:
   });
 
   function handleChange(event) {
     setForm({
       ...form,
-      [event.target.name]: event.target.defaultValue,
+      [event.target.name]: event.target.value,
     });
   }
 
   function handleSubmit(event, objectiveId) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
-    console.log(event.target.name);
-    //  setForm({ ...form, [event.target.name]: event.target.defaultValue })
+
+    //  setForm({ ...form, [event.target.name]: event.target.value })
 
     OBJECTIVES_SERVICE.EDIT_OBJECTIVE({ ...form, objectiveId }, accessToken)
       .then((response) => {
@@ -42,21 +37,82 @@ function ShowObjectives(props) {
         );
       })
       .catch((err) => {
-        console.error("err:", err.response);
+        console.error("err:", err);
       });
   }
+  return (
+    <form onSubmit={(e) => handleSubmit(e, props._id)}>
+      <input
+        type="text"
+        name="problem"
+        // onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        value={form.problem}
+      />
 
-  function handleKeyDown(event) {
-    if (event.keyCode === 13) {
-      handleChange(event);
-    }
-  }
+      <input
+        type="text"
+        name="objectiveInput"
+        placeholder="and I want to change Y"
+        // onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        value={form.objectiveInput}
+      />
+
+      <input
+        type="text"
+        name="keyResult"
+        placeholder="X number/value for objective"
+        // onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        value={form.keyResult}
+      />
+
+      <input
+        type="date"
+        name="objectiveEndDate"
+        // onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        value={form.objectiveEndDate}
+      />
+
+      <select
+        name="category"
+        // onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        value={form.category}
+      >
+        <option name="Career">Career</option>
+        <option name="Passion">Passion</option>
+        <option name="Relationship">Relationship</option>
+        <option name="Finance">Finance</option>
+        <option name="Wellbeing">Wellbeing</option>
+      </select>
+
+      <select
+        name="visibility"
+        // onKeyDown={handleKeyDown}
+        value={form.visibility}
+        onChange={handleChange}
+      >
+        <option name="Public">Public</option>
+        <option name="Private">Private</option>
+        <option name="Friends">Friends</option>
+      </select>
+
+      <button type="submit">Create Goal</button>
+    </form>
+  );
+}
+
+function ShowObjectives(props) {
+  const [listOfObjectives, setListOfObjectives] = React.useState([]);
 
   React.useEffect(() => {
     axios
       .get(`${CONSTS.URL}/Objectives`)
       .then((response) => {
-        console.log("response:", response);
+        //  console.log("response:", response);
         setListOfObjectives(response.data);
       })
       .catch((err) => {
@@ -72,80 +128,7 @@ function ShowObjectives(props) {
       <h1>List of Objectives</h1>
 
       {listOfObjectives.map((objective) => {
-        return (
-          <form
-            key={objective._id}
-            onSubmit={(e) => handleSubmit(e, objective._id)}
-          >
-            <input
-              type="text"
-              name="problem"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.problem}
-            />
-
-            <input
-              type="text"
-              name="objectiveInput"
-              placeholder="and I want to change Y"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.objectiveInput}
-            />
-
-            <input
-              type="text"
-              name="keyResult"
-              placeholder="X number/value for objective"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.keyResult}
-            />
-
-            <input
-              type="date"
-              name="objectiveEndDate"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.objectiveEndDate}
-            />
-
-            <input
-              type="text"
-              name="action"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.action}
-            />
-
-            <select
-              name="category"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.category}
-            >
-              <option name="Career">Career</option>
-              <option name="Passion">Passion</option>
-              <option name="Relationship">Relationship</option>
-              <option name="Finance">Finance</option>
-              <option name="Wellbeing">Wellbeing</option>
-            </select>
-
-            <select
-              name="visibility"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.visibility}
-            >
-              <option name="Public">Public</option>
-              <option name="Private">Private</option>
-              <option name="Friends">Friends</option>
-            </select>
-
-            <input
-              type="email"
-              name="sharedWithUser"
-              onKeyDown={handleKeyDown}
-              defaultValue={objective.sharedWithUser}
-            />
-
-            <button type="submit">Create Goal</button>
-          </form>
-        );
+        return <EditObjective {...objective} key={objective._id} />;
       })}
     </div>
   );
