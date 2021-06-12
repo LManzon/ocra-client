@@ -2,7 +2,7 @@ import axios from "axios";
 import * as CONSTS from "../utils/consts";
 
 const objectiveService = axios.create({
-  baseURL: `${CONSTS.SERVER_URL}/profile`,
+  baseURL: `${CONSTS.SERVER_URL}/objectives`,
 });
 
 export function ADD_OBJECTIVE(body, token) {
