@@ -1,23 +1,28 @@
 import axios from "axios";
-import * as CONSTS from "../utils/consts"
+import * as CONSTS from "../utils/consts";
 
-const ObjectiveService = axios.create({
-  baseURL: `${CONSTS.URL}/objectives`
-})
+const objectiveService = axios.create({
+  baseURL: `${CONSTS.SERVER_URL}/objectives`,
+});
 
 export function ADD_OBJECTIVE(body, token) {
-  return ObjectiveService.post("/add", body, {
+  return objectiveService.post("/add", body, {
     headers: {
       authorization: token,
     },
   });
 }
-
 
 export function EDIT_OBJECTIVE(body, token) {
-  return ObjectiveService.post("/edit", body, {
+  return objectiveService.post("/edit", body, {
     headers: {
       authorization: token,
     },
   });
 }
+// return objectiveService.post("/addObjective", body, {
+//   headers: {
+//     authorization: token,
+//   },
+// });
+//}
