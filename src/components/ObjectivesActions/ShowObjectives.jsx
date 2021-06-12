@@ -8,9 +8,7 @@ import ReactDOM from "react-dom"
 
 function ShowObjectives(props) {
     const [listOfObjectives, setListOfObjectives] = React.useState([]);
-    const { user, authenticate } = props;
-
-
+    const { user, authenticate, objective } = props;
 
     const [form, setForm] = React.useState({
         problem: "",
