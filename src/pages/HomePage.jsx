@@ -3,7 +3,7 @@ import "../App.css";
 import Objectives from "../components/ObjectivesActions/Objectives";
 import ShowObjectives from "../components/ObjectivesActions/ShowObjectives";
 
-function HomePage() {
+function HomePage(props) {
   return (
     <div className="App">
       <header className="App-header">
