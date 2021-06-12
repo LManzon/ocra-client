@@ -84,6 +84,7 @@ export default function App() {
           path={PATHS.PROFILE_PAGE}
           component={ProfilePage}
           user={user}
+          setUser={setUser}
           authenticate={authenticate}
         />
       </Switch>

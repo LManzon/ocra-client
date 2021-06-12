@@ -3,25 +3,27 @@ import * as PATHS from "../../utils/paths";
 import { Redirect } from "react-router-dom";
 import * as CONSTS from "../../utils/consts";
 import * as PROFILE_SERVICE from "../../services/profile.service.js";
+import * as PROFILE_PICTURE from "../../services/profile.picture.js";
+import Objectives from "../ObjectivesActions/Objectives";
 
 import axios from "axios";
 import ProtectedRoute from "../../routing-components/ProtectedRoute";
 
 export default function ProfilePage(props) {
   const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
-  const [displayUpdatePassword, setDisplayUpdatePassword] = React.useState(
-    false
-  );
+  const [displayUpdatePicture, setDisplayUpdatePicture] = React.useState(null);
 
-  const { user, authenticate } = props;
+  const { user, setUser, authenticate } = props;
 
   function profileToggle() {
     setDisplayUpdateProfile(!displayUpdateProfile);
   }
 
-  function passwordToggle() {
-    setDisplayUpdatePassword(!displayUpdatePassword);
+  function pictureToggle() {
+    setDisplayUpdatePicture(!displayUpdatePicture);
   }
+
+  function deleteProfile() {}
 
   return (
     <div>
@@ -31,13 +33,26 @@ export default function ProfilePage(props) {
         width="200px"
         alt={`Profile picture for ${user.name}`}
       />
+      <button onClick={pictureToggle}> Update Picture</button>
+      {displayUpdatePicture ? (
+        <UpdatePicture
+          user={user}
+          setUser={setUser}
+          authenticate={authenticate}
+        />
+      ) : null}
       <button onClick={profileToggle}> Update Profile</button>
       {displayUpdateProfile ? (
         <UpdateProfile user={user} authenticate={authenticate} />
       ) : null}
-      <button onClick={passwordToggle}> Change Password</button>
-      {displayUpdatePassword && <UpdatePassword authenticate={authenticate} />}
-      <button> Delete Account</button>
+      {/* <button onClick={passwordToggle}> Change Password</button>
+      {displayUpdatePassword && <UpdatePassword authenticate={authenticate} />} */}
+      <button onClick={deleteProfile}> Delete Account</button>
+
+      <br />
+      <div>
+        <Objectives />
+      </div>
     </div>
   );
 }
@@ -103,27 +118,69 @@ function UpdateProfile(props) {
           onChange={handleChange}
         />
       </div>
+
       <button>Update Profile</button>
     </form>
   );
 }
 
-function UpdatePassword() {
+function UpdatePicture(props) {
+  const { user, setUser } = props;
+  const [newPicture, setNewPicture] = React.useState(null);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
+
+    if (!newPicture) {
+      return;
+    }
+
+    const formBody = new window.FormData();
+
+    formBody.append("profilePic", newPicture);
+
+    PROFILE_PICTURE.UPDATE_PICTURE(formBody, accessToken)
+      .then((res) => {
+        console.log(res);
+        setUser({ ...user, profilePic: res.data.picFromServer });
+      })
+      .catch((err) => console.log(err.response));
+  }
+
+  function handleChange(event) {
+    const image = event.target.files[0];
+
+    setNewPicture(image);
+  }
+
   return (
-    <form>
-      <div>
-        <label>Current Password</label>
-        <input name="password" placeholder="Current Password" />
-      </div>
-      <div>
-        <label>New password</label>
-        <input name="password" placeholder="New Password" />
-      </div>
-      <div>
-        <label>Confirm New Password</label>
-        <input name="password" placeholder="Confirm New Password" />
-      </div>
-      <button>Update Password</button>
+    <form onSubmit={handleSubmit}>
+      <input type="file" onChange={handleChange} />
+      <button type="submit"> Update Picture</button>
     </form>
   );
 }
+
+function DeleteProfile() {}
+
+// function UpdatePassword() {
+//   return (
+//     <form>
+//       <div>
+//         <label>Current Password</label>
+//         <input name="password" placeholder="Current Password" />
+//       </div>
+//       <div>
+//         <label>New password</label>
+//         <input name="password" placeholder="New Password" />
+//       </div>
+//       <div>
+//         <label>Confirm New Password</label>
+//         <input name="password" placeholder="Confirm New Password" />
+//       </div>
+//       <button>Update Password</button>
+//     </form>
+//   );
+// }

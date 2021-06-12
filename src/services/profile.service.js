@@ -12,3 +12,11 @@ export function UPDATE_PROFILE(body, token) {
     },
   });
 }
+
+// export function UPDATE_PICTURE(body, token) {
+//   return profileService.post(`/updatePicture`, body, {
+//     headers: {
+//       authorization: token,
+//     },
+//   });
+// }
