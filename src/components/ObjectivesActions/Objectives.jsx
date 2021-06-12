@@ -36,8 +36,6 @@ function Objectives(props) {
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
 
-
-
     OBJECTIVES_SERVICE.ADD_OBJECTIVE(form, accessToken)
       .then((response) => {
         console.log("response:", response);
