@@ -24,26 +24,40 @@ function EditObjective(props) {
     });
   }
 
- 
-
-
   function handleSubmit(event, objectiveId) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
-    //  setForm({ ...form, [event.target.name]: event.target.value })
 
-    OBJECTIVES_SERVICE.EDIT_OBJECTIVE({ ...form, objectiveId }, accessToken)
-      .then((response) => {
-        console.log("response:", response);
-        props.history.push(
-          `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
-        );
-      })
-      .catch((err) => {
-        console.error("err:", err);
-      });
+    //  setForm({ ...form, [event.target.name]: event.target.value })
+    if (event.target.value = "edit") {
+      OBJECTIVES_SERVICE.EDIT_OBJECTIVE({ ...form, objectiveId }, accessToken)
+        .then((response) => {
+          console.log("response:", response);
+          props.history.push(
+            `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
+          );
+        })
+        .catch((err) => {
+          console.error("err:");
+        });
+    }
+    else {
+      OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ ...form, objectiveId }, accessToken)
+        .then((response) => {
+          console.log("response:", response);
+          props.history.push(
+            `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
+          );
+        })
+        .catch((err) => {
+          console.error("err:", err);
+        });
+    }
+
   }
+
+
   return (
     <form onSubmit={(e) => handleSubmit(e, props._id)}>
       <input
@@ -104,8 +118,7 @@ function EditObjective(props) {
         <option name="Friends">Friends</option>
       </select>
 
-      <button type="button" name="edit" onClick={handleSubmit}>Edit</button>
-      <button type="button" name="delete" onClick={"blah"}>Delete</button>
+      <button type="button" onClick={handleSubmit}>Edit</button>
 
     </form>
   );
@@ -129,7 +142,7 @@ function ShowObjectives(props) {
 
   //   {/* <form key={objective._id} onSubmit={handleSubmit}> */}
 
-  
+
 
   return (
     <div>
