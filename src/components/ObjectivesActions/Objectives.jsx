@@ -32,12 +32,14 @@ function Objectives(props) {
     OBJECTIVE_SERVICE.ADD_OBJECTIVE(form, accessToken)
       .then((response) => {
         console.log("response:", response);
-        props.history.push(
-          `${PATHS.PROFILE_PAGE}/${response.data.objectives._id}`
-        );
+        props.getObjectives();
+        // props.history.push(
+        //   `${PATHS.PROFILE_PAGE}/${response.data.objectives._id}`
+        // );
       })
       .catch((err) => {
-        console.error("err:", err.response);
+        console.error("err:", err);
+        console.error(err.response);
       });
   }
 

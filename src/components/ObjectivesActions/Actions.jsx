@@ -8,6 +8,7 @@ import Objectives from "./Objectives";
 
 function Actions(props) {
   const { objective } = props;
+
   const [form, setForm] = React.useState({
     action: "",
     status: "",
@@ -25,7 +26,10 @@ function Actions(props) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
-    ACTIONS_SERVICE.ADD_ACTIONS(form, accessToken)
+    ACTIONS_SERVICE.ADD_ACTIONS(
+      { ...form, objectiveId: objective._id },
+      accessToken
+    )
       .then((response) => {
         console.log("response:", response);
         // props.history.push(
@@ -36,6 +40,8 @@ function Actions(props) {
         console.error("err:", err.response);
       });
   }
+
+  console.log(objective);
 
   return (
     <div>
