@@ -4,8 +4,12 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVES_SERVICE from "../../services/objective.service";
 import { Link } from "react-router-dom";
+import Actions from "../../components/ObjectivesActions/Actions";
 
 function EditObjective(props) {
+  const { objective } = props;
+  const [displayAddAction, setDisplayAddAction] = React.useState(false);
+
   const [form, setForm] = React.useState({
     problem: props.problem,
     objectiveInput: props.objectiveInput,
@@ -95,12 +99,15 @@ function EditObjective(props) {
         value={form.visibility}
         onChange={handleChange}
       >
+        cd
         <option name="Public">Public</option>
         <option name="Private">Private</option>
         <option name="Friends">Friends</option>
       </select>
 
       <button type="submit">Create Goal</button>
+
+      <Actions objective={objective} />
     </form>
   );
 }
@@ -110,9 +117,9 @@ function ShowObjectives(props) {
 
   React.useEffect(() => {
     axios
-      .get(`${CONSTS.URL}/Objectives`)
+      .get(`${CONSTS.SERVER_URL}/Objectives`)
       .then((response) => {
-        //  console.log("response:", response);
+        console.log("response:", response);
         setListOfObjectives(response.data);
       })
       .catch((err) => {
@@ -128,7 +135,9 @@ function ShowObjectives(props) {
       <h1>List of Objectives</h1>
 
       {listOfObjectives.map((objective) => {
-        return <EditObjective {...objective} key={objective._id} />;
+        return (
+          <EditObjective {...objective} key={objective._id}></EditObjective>
+        );
       })}
     </div>
   );
