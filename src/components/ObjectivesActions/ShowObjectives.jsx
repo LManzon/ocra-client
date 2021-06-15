@@ -5,6 +5,7 @@ import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVES_SERVICE from "../../services/objective.service";
 import { Link } from "react-router-dom";
 
+
 function EditObjective(props) {
   const [form, setForm] = React.useState({
     problem: props.problem,
@@ -22,6 +23,9 @@ function EditObjective(props) {
       [event.target.name]: event.target.value,
     });
   }
+
+ 
+
 
   function handleSubmit(event, objectiveId) {
     event.preventDefault();
@@ -100,7 +104,9 @@ function EditObjective(props) {
         <option name="Friends">Friends</option>
       </select>
 
-      <button type="submit">Create Goal</button>
+      <button type="button" name="edit" onClick={handleSubmit}>Edit</button>
+      <button type="button" name="delete" onClick={"blah"}>Delete</button>
+
     </form>
   );
 }
@@ -123,15 +129,21 @@ function ShowObjectives(props) {
 
   //   {/* <form key={objective._id} onSubmit={handleSubmit}> */}
 
+  
+
   return (
     <div>
       <h1>List of Objectives</h1>
 
+
       {listOfObjectives.map((objective) => {
+
         return <EditObjective {...objective} key={objective._id} />;
       })}
     </div>
   );
 }
+
+
 
 export default ShowObjectives;
