@@ -4,8 +4,6 @@ import * as CONSTS from "../../utils/consts";
 import * as ACTIONS_SERVICE from "../../services/actions.service";
 import Objectives from "./Objectives";
 
-//
-
 function Actions(props) {
   const { objective } = props;
 
@@ -32,6 +30,8 @@ function Actions(props) {
     )
       .then((response) => {
         console.log("response:", response);
+        props.getObjectives();
+
         // props.history.push(
         //   `${PATHS.PROFILE_PAGE}/${response.data.objectives._id}`
         // );
@@ -62,9 +62,9 @@ function Actions(props) {
         <div>
           <label>status</label>
           <select name="status" value={form.status} onChange={handleChange}>
-            <option name="Public">Not Started</option>
-            <option name="Private">In-progress</option>
-            <option name="Friends">Completed</option>
+            <option name="Not Started">Not Started</option>
+            <option name="In-Progress">In-Progress</option>
+            <option name="Completed">Completed</option>
           </select>
         </div>
 
