@@ -1,21 +1,41 @@
 nav {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 30x;
   display: flex;
-  padding: 1em;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background: #282c34;
-  font-weight: 600;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border-bottom: 1px solid rgb(175, 175, 175);
+
+
 }
 
 .nav__projectName {
-  color: #e4f9ff;
+  color: #000000;
   text-decoration: none;
+  font-size: 22px;
+  padding-left: 10px;
+  
 }
 
 .authLink {
   color: #61dafb;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
+ 
+}
+
+.nav__authLinks{ 
+  display: flex;
+
+  color: black !important
+  
+}
+
+.navnameandpic{ 
+  display: flex;
 }
 
 .authLink + .authLink {
@@ -23,7 +43,7 @@ nav {
 }
 
 .authLink:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 .nav-logoutbtn {
@@ -36,9 +56,11 @@ nav {
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  color: #e3f2ff;
+  color: #2e3236;
   transition: all 0.2s ease-in-out;
   position: sticky;
+  max-height: 35px;
+
   top: 0;
 }
 
@@ -46,3 +68,4 @@ nav {
   transform: scale(1.05);
   background-color: #d13e3e;
 }
+

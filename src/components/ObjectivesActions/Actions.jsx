@@ -41,7 +41,7 @@ function Actions(props) {
 
   return (
     <div>
-      <h1>Add a new Action</h1>
+      <p>Add a new Action</p>
 
       <form onSubmit={handleSubmit}>
         <div>

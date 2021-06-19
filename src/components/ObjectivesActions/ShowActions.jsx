@@ -14,7 +14,6 @@ function ShowAction(props) {
 
   return (
     <div>
-      <h1>List of Objectives</h1>
 
       {props.objective.action.map((event) => {
         return <EditAction {...event} key={event._id} />;

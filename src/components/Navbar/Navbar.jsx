@@ -15,8 +15,8 @@ const Navbar = (props) => {
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <div>
-              <p style={{ color: "white" }}>{user.name}</p>
+            <div className="navnameandpic">
+              <p style={{ color: "black" }}>{user.name}</p>
               <img
                 src={user.profilePic}
                 width="50px"
@@ -35,15 +35,15 @@ const Navbar = (props) => {
             </button>
           </>
         ) : (
-          <>
-            <Link to={PATHS.SIGNUPPAGE} className="authLink">
-              Signup
+            <>
+              <Link to={PATHS.SIGNUPPAGE} className="authLink">
+                Signup
             </Link>
-            <Link to={PATHS.LOGINPAGE} className="authLink">
-              Log In
+              <Link to={PATHS.LOGINPAGE} className="authLink">
+                Log In
             </Link>
-          </>
-        )}
+            </>
+          )}
       </div>
     </nav>
   );

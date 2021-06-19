@@ -40,17 +40,20 @@ function HomePage(props) {
           <header className="App-header">
             <Objectives user={user} getObjectives={getObjectives}></Objectives>
             <br></br>
+            <h1>Your goals</h1>
             <ShowObjectives
+
+
               getObjectives={getObjectives}
               listOfObjectives={listOfObjectives}
             />
           </header>{" "}
         </>
       ) : (
-        <>
-          <h1> Welcome to ocra</h1>
-        </>
-      )}
+          <>
+            <h1> Welcome to ocra</h1>
+          </>
+        )}
     </div>
   );
 }
