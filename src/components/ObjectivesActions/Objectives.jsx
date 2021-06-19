@@ -11,7 +11,7 @@ function Objectives(props) {
     objectiveInput: "",
     keyResult: "",
     objectiveEndDate: 0,
-    // action: "",
+    action: [],
     category: "",
     visibility: "",
     //sharedWithUser: "",

@@ -23,24 +23,18 @@ function HomePage(props) {
 
   React.useEffect(() => {
     getObjectives();
-    // axios
-    //   .get(`${CONSTS.SERVER_URL}/Objectives`)
-    //   .then((response) => {
-    //     console.log("response:", response);
-    //     setListOfObjectives(response.data);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
     return () => console.log("something");
   }, []);
-
+  console.log("newObj:", listOfObjectives);
   return (
     <div className="App">
       <header className="App-header">
         <Objectives getObjectives={getObjectives}></Objectives>
         <br></br>
-        <ShowObjectives listOfObjectives={listOfObjectives}></ShowObjectives>
+        <ShowObjectives
+          getObjectives={getObjectives}
+          listOfObjectives={listOfObjectives}
+        ></ShowObjectives>
         {/* <Actions /> */}
       </header>
     </div>
