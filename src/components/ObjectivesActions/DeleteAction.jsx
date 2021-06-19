@@ -7,15 +7,17 @@ export default function DeleteAction(props) {
   console.log("delete action props:", props);
   const actionId = props.actionId;
   console.log("actionId:", actionId);
+
   function deleteAction() {
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
     ACTIONS_SERVICE.DELETE_ACTIONS({ actionId }, accessToken)
       .then((response) => {
         console.log("response:", response);
+        props.getObjectives();
       })
       .catch((err) => {
-        console.error("err:");
+        console.error("err:", err);
       });
   }
   return (

@@ -13,20 +13,18 @@ function DeleteObjectives(props) {
   const objectiveId = props.objectiveId;
   console.log("THIS IS IT:", props.objectiveId);
 
-  function deleteObjective(props) {
+  function deleteObjective() {
     console.log("THIS IS IT:", props);
 
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
-    //  setForm({ ...form, [event.target.name]: event.target.value })
+
     OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ objectiveId }, accessToken)
       .then((response) => {
         console.log("response:", response);
-        // props.history.push(
-        //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
-        // );
+        props.getObjectives();
       })
       .catch((err) => {
-        console.error("err:");
+        console.error("err:", err);
       });
   }
 

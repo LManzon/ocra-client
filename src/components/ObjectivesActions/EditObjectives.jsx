@@ -139,7 +139,10 @@ function EditObjective(props) {
         </button>
       </form>
 
-      <DeleteObjectives objectiveId={objectiveId}></DeleteObjectives>
+      <DeleteObjectives
+        objectiveId={objectiveId}
+        getObjectives={props.getObjectives}
+      ></DeleteObjectives>
       <Actions getObjectives={props.getObjectives} objective={objective} />
       <ShowAction getObjectives={props.getObjectives} objective={objective} />
     </>
