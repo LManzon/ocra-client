@@ -23,7 +23,7 @@ export function EDIT_OBJECTIVE(body, token) {
 
 
 export function DELETE_OBJECTIVE(body, token) {
-  return objectiveService.post("/edit", body, {
+  return objectiveService.post("/delete", body, {
     headers: {
       authorization: token,
     },
