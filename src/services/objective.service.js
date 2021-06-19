@@ -20,6 +20,16 @@ export function EDIT_OBJECTIVE(body, token) {
     },
   });
 }
+
+
+export function DELETE_OBJECTIVE(body, token) {
+  return objectiveService.post("/delete", body, {
+    headers: {
+      authorization: token,
+    },
+  });
+}
+
 // return objectiveService.post("/addObjective", body, {
 //   headers: {
 //     authorization: token,
