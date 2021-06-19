@@ -10,11 +10,12 @@ import ShowObjectives from "./ShowObjectives";
 
 function EditAction(props) {
   console.log("edit Action props:", props);
-  const { action } = props;
+  const { action, status } = props;
   console.log("actions to display:", action);
+  console.log("actions to display:", status);
   const [form, setForm] = React.useState({
-    action: action.action,
-    status: action.status,
+    action: action,
+    status: status,
   });
 
   function handleChange(event) {
@@ -28,14 +29,9 @@ function EditAction(props) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
-    //  setForm({ ...form, [event.target.name]: event.target.value })
-
     ACTIONS_SERVICE.EDIT_ACTIONS({ ...form, actionId }, accessToken)
       .then((response) => {
         console.log("response:", response);
-        // props.history.push(
-        //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
-        // );
       })
       .catch((err) => {
         console.error("err:", err);
@@ -46,16 +42,10 @@ function EditAction(props) {
       <input
         type="text"
         name="action"
-        // onKeyDown={handleKeyDown}
         onChange={handleChange}
         value={form.action}
       />
-      <select
-        name="status"
-        // onKeyDown={handleKeyDown}
-        value={form.status}
-        onChange={handleChange}
-      >
+      <select name="status" value={form.status} onChange={handleChange}>
         <option name="Public">Not Started</option>
         <option name="Private">In-progress</option>
         <option name="Friends">Completed</option>
