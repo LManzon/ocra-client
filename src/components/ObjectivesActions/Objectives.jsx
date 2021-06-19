@@ -13,7 +13,6 @@ function Objectives(props) {
     action: [],
     category: "",
     visibility: "",
-    //sharedWithUser: "",
   });
 
   function handleChange(event) {

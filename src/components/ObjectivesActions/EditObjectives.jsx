@@ -142,6 +142,7 @@ function EditObjective(props) {
           Delete
         </button>
       </form>
+
       <Actions getObjectives={props.getObjectives} objective={objective} />
       <ShowAction getObjectives={props.getObjectives} objective={objective} />
     </>

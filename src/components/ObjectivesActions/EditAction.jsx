@@ -7,10 +7,13 @@ import { Link } from "react-router-dom";
 import Actions from "../../components/ObjectivesActions/Actions";
 import ShowAction from "./ShowActions";
 import ShowObjectives from "./ShowObjectives";
+import DeleteAction from "./DeleteAction";
 
 function EditAction(props) {
   console.log("edit Action props:", props);
   const { action, status } = props;
+  const actionId = props._id;
+  console.log("actionIDVVV:", actionId);
   console.log("actions to display:", action);
   console.log("actions to display:", status);
   const [form, setForm] = React.useState({
@@ -52,6 +55,7 @@ function EditAction(props) {
       </select>
 
       <button type="submit">Create Goal</button>
+      <DeleteAction actionId={actionId} getObjectives={props.getObjectives} />
     </form>
   );
 }
