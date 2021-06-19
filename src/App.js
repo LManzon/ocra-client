@@ -60,7 +60,12 @@ export default function App() {
     <div className="App">
       <Navbar handleLogout={handleLogout} user={user} />
       <Switch>
-        <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+        <NormalRoute
+          exact
+          path={PATHS.HOMEPAGE}
+          component={HomePage}
+          user={user}
+        />
         <NormalRoute
           exact
           path={PATHS.SIGNUPPAGE}

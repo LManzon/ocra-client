@@ -3,9 +3,8 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVE_SERVICE from "../../services/objective.service";
 
-//
-
 function Objectives(props) {
+  const { user } = props;
   const [form, setForm] = React.useState({
     problem: "",
     objectiveInput: "",
@@ -29,13 +28,10 @@ function Objectives(props) {
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
-    OBJECTIVE_SERVICE.ADD_OBJECTIVE(form, accessToken)
+    OBJECTIVE_SERVICE.ADD_OBJECTIVE({ ...form, user }, accessToken)
       .then((response) => {
         console.log("response:", response);
         props.getObjectives();
-        // props.history.push(
-        //   `${PATHS.PROFILE_PAGE}/${response.data.objectives._id}`
-        // );
       })
       .catch((err) => {
         console.error("err:", err);
@@ -87,16 +83,7 @@ function Objectives(props) {
             value={form.objectiveEndDate}
           />
         </div>
-        {/* <div>
-          <label>Things I need to do to achieve this</label>
 
-          <input
-            type="text"
-            name="action"
-            onChange={handleChange}
-            value={form.action}
-          />
-        </div> */}
         <div>
           <label>Choose the category</label>
 
@@ -104,7 +91,7 @@ function Objectives(props) {
             <option name="Career">Career</option>
             <option name="Passion">Passion</option>
             <option name="Relationship">Relationship</option>
-            <option name="Finance">Finance</option>
+            <option name="Financial">Financial</option>
             <option name="Wellbeing">Wellbeing</option>
           </select>
         </div>
@@ -120,16 +107,6 @@ function Objectives(props) {
             <option name="Friends">Friends</option>
           </select>
         </div>
-        {/* <div>
-          <label>Share with</label>
-
-          <input
-            type="email"
-            name="sharedWithUser"
-            onChange={handleChange}
-            value={form.sharedWithUser}
-          />
-        </div> */}
 
         <button type="submit">Create Goal</button>
       </form>

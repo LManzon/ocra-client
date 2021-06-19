@@ -31,10 +31,6 @@ function Actions(props) {
       .then((response) => {
         console.log("response:", response);
         props.getObjectives();
-
-        // props.history.push(
-        //   `${PATHS.PROFILE_PAGE}/${response.data.objectives._id}`
-        // );
       })
       .catch((err) => {
         console.error("err:", err.response);

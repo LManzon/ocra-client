@@ -10,6 +10,8 @@ import ShowObjectives from "./ShowObjectives";
 
 function EditObjective(props) {
   const { objective } = props;
+  console.log("propsXXX:", objective);
+
   const [displayAddAction, setDisplayAddAction] = React.useState(false);
   const [action, setaction] = React.useState([]);
 
@@ -30,6 +32,7 @@ function EditObjective(props) {
   }
 
   function handleSubmit(event, objectiveId) {
+    console.log("objectiveId:", objectiveId);
     event.preventDefault();
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
@@ -47,17 +50,23 @@ function EditObjective(props) {
       });
   }
 
-
-
-
   function deleteObjective(props) {
-    console.log(props.objective._id)
+    console.log(props.objective._id);
+    const objectiveId = props.objective._id;
 
-
+    const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
+    //  setForm({ ...form, [event.target.name]: event.target.value })
+    OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ objectiveId }, accessToken)
+      .then((response) => {
+        console.log("response:", response);
+        // props.history.push(
+        //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
+        // );
+      })
+      .catch((err) => {
+        console.error("err:");
+      });
   }
-
-
-
 
   return (
     <>
@@ -125,13 +134,18 @@ function EditObjective(props) {
           Edit
         </button>
 
+<<<<<<< HEAD
 
         <button type="button" onClick={() => deleteObjective(props)} name="delete">
+=======
+        <button
+          type="button"
+          onClick={() => deleteObjective(props)}
+          name="delete"
+        >
+>>>>>>> ae22371ee7b8a72a89d372a44e57e795e3fed3f5
           Delete
         </button>
-
-
-
       </form>
       <Actions getObjectives={props.getObjectives} objective={objective} />
       <ShowAction getObjectives={props.getObjectives} objective={objective} />

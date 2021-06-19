@@ -7,11 +7,17 @@ import axios from "axios";
 import * as CONSTS from "../utils/consts";
 
 function HomePage(props) {
+  const { user } = props;
   const [listOfObjectives, setListOfObjectives] = React.useState([]);
 
   function getObjectives() {
+    const token = localStorage.getItem(CONSTS.ACCESS_TOKEN);
     axios
-      .get(`${CONSTS.SERVER_URL}/Objectives`)
+      .get(`${CONSTS.SERVER_URL}/objectives`, {
+        headers: {
+          authorization: token,
+        },
+      })
       .then((response) => {
         console.log("response:", response);
         setListOfObjectives(response.data);
@@ -28,15 +34,23 @@ function HomePage(props) {
   console.log("newObj:", listOfObjectives);
   return (
     <div className="App">
-      <header className="App-header">
-        <Objectives getObjectives={getObjectives}></Objectives>
-        <br></br>
-        <ShowObjectives
-          getObjectives={getObjectives}
-          listOfObjectives={listOfObjectives}
-        ></ShowObjectives>
-        {/* <Actions /> */}
-      </header>
+      {user ? (
+        <>
+          {" "}
+          <header className="App-header">
+            <Objectives user={user} getObjectives={getObjectives}></Objectives>
+            <br></br>
+            <ShowObjectives
+              getObjectives={getObjectives}
+              listOfObjectives={listOfObjectives}
+            />
+          </header>{" "}
+        </>
+      ) : (
+        <>
+          <h1> Welcome to ocra</h1>
+        </>
+      )}
     </div>
   );
 }

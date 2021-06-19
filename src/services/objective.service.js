@@ -28,10 +28,3 @@ export function DELETE_OBJECTIVE(body, token) {
     },
   });
 }
-
-// return objectiveService.post("/addObjective", body, {
-//   headers: {
-//     authorization: token,
-//   },
-// });
-//}
