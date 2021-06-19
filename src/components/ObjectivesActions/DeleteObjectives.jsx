@@ -11,7 +11,6 @@ import ShowObjectives from "./ShowObjectives";
 
 function DeleteObjectives(props) {
     const objectiveId = props.objectiveId
-    console.log("THIS IS IT:", props.objectiveId);
 
     function deleteObjective(props) {
         console.log("THIS IS IT:", props);
