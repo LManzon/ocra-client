@@ -11,11 +11,12 @@ import EditObjective from "./EditObjectives";
 function ShowObjectives(props) {
   return (
     <div>
-      <h1>List of Objectives</h1>
+
 
       {props.listOfObjectives.map((objective) => {
         return (
           <EditObjective
+
             getObjectives={props.getObjectives}
             objective={objective}
             key={objective._id}

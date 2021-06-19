@@ -7,11 +7,14 @@ import { Link } from "react-router-dom";
 import Actions from "../../components/ObjectivesActions/Actions";
 import ShowAction from "./ShowActions";
 import ShowObjectives from "./ShowObjectives";
+import DeleteObjectives from "./DeleteObjectives";
 
 function EditObjective(props) {
   const { objective } = props;
   console.log("propsXXX:", objective);
-
+  console.log("checkProps:", props);
+  const objectiveId = objective._id;
+  console.log("check objectiveId:", objectiveId);
   const [displayAddAction, setDisplayAddAction] = React.useState(false);
   const [action, setaction] = React.useState([]);
 
@@ -49,24 +52,25 @@ function EditObjective(props) {
         console.error("err:");
       });
   }
-
-  function deleteObjective(props) {
-    console.log(props.objective._id);
-    const objectiveId = props.objective._id;
-
-    const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
-    //  setForm({ ...form, [event.target.name]: event.target.value })
-    OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ objectiveId }, accessToken)
-      .then((response) => {
-        console.log("response:", response);
-        // props.history.push(
-        //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
-        // );
-      })
-      .catch((err) => {
-        console.error("err:");
-      });
-  }
+  /*
+    function deleteObjective(props) {
+      console.log(props.objective._id);
+      const objectiveId = props.objective._id;
+  
+      const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
+      //  setForm({ ...form, [event.target.name]: event.target.value })
+      OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ objectiveId }, accessToken)
+        .then((response) => {
+          console.log("response:", response);
+          // props.history.push(
+          //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
+          // );
+        })
+        .catch((err) => {
+          console.error("err:");
+        });
+    }
+    */
 
   return (
     <>
@@ -133,16 +137,9 @@ function EditObjective(props) {
         <button type="submit" name="edit">
           Edit
         </button>
-
-        <button
-          type="button"
-          onClick={() => deleteObjective(props)}
-          name="delete"
-        >
-          Delete
-        </button>
       </form>
 
+      <DeleteObjectives objectiveId={objectiveId}></DeleteObjectives>
       <Actions getObjectives={props.getObjectives} objective={objective} />
       <ShowAction getObjectives={props.getObjectives} objective={objective} />
     </>
