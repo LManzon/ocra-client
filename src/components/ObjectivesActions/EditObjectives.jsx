@@ -47,6 +47,27 @@ function EditObjective(props) {
       });
   }
 
+  function deleteObjective(event, objectiveId) {
+
+    event.preventDefault();
+    const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
+
+    //  setForm({ ...form, [event.target.name]: event.target.value })
+
+    OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ ...form, objectiveId }, accessToken)
+      .then((response) => {
+        console.log("response:", response);
+        // props.history.push(
+        //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
+        // );
+      })
+      .catch((err) => {
+        console.error("err:");
+      });
+  }
+
+
+
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e, objective._id)}>
@@ -112,6 +133,14 @@ function EditObjective(props) {
         <button type="submit" name="edit">
           Edit
         </button>
+
+
+        <button type="buttont" onClick={deleteObjective} name="delete">
+          Delete
+        </button>
+
+
+
       </form>
       <Actions getObjectives={props.getObjectives} objective={objective} />
       <ShowAction getObjectives={props.getObjectives} objective={objective} />
