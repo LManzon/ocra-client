@@ -7,13 +7,14 @@ import { Link } from "react-router-dom";
 import Actions from "../../components/ObjectivesActions/Actions";
 import ShowAction from "./ShowActions";
 import ShowObjectives from "./ShowObjectives";
-import DeleteObjectives from "./DeleteObjectives"
-
+import DeleteObjectives from "./DeleteObjectives";
 
 function EditObjective(props) {
   const { objective } = props;
   console.log("propsXXX:", objective);
-  const objectiveId = props._id
+  console.log("checkProps:", props);
+  const objectiveId = objective._id;
+  console.log("check objectiveId:", objectiveId);
   const [displayAddAction, setDisplayAddAction] = React.useState(false);
   const [action, setaction] = React.useState([]);
 
@@ -136,8 +137,6 @@ function EditObjective(props) {
         <button type="submit" name="edit">
           Edit
         </button>
-
-
       </form>
 
       <DeleteObjectives objectiveId={objectiveId}></DeleteObjectives>

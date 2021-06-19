@@ -69,3 +69,22 @@ nav {
   background-color: #d13e3e;
 }
 
+.navbarbottom { 
+justify-content: center;
+background-color:rgb(209, 209, 209);
+color: white;
+position: fixed;
+border-top: 1px solid rgb(175, 175, 175);
+bottom: 0;
+width: 100%;
+
+}
+
+.bottomnavtext{ 
+display: flex;
+align-items: center;
+color: white !important;
+
+
+}
+

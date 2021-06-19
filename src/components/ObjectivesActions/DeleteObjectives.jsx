@@ -8,9 +8,10 @@ import Actions from "../../components/ObjectivesActions/Actions";
 import ShowAction from "./ShowActions";
 import ShowObjectives from "./ShowObjectives";
 
-
 function DeleteObjectives(props) {
-    const objectiveId = props.objectiveId
+    console.log("check delete props:", props);
+    const objectiveId = props.objectiveId;
+    console.log("THIS IS IT:", props.objectiveId);
 
     function deleteObjective(props) {
         console.log("THIS IS IT:", props);
@@ -29,16 +30,14 @@ function DeleteObjectives(props) {
             });
     }
 
-    console.log("prop check:", props)
+    console.log("prop check:", props);
     return (
         <div>
-
             <button type="button" onClick={() => deleteObjective()} name="delete">
                 Delete
-        </button>
-
+      </button>
         </div>
-    )
+    );
 }
 
-export default DeleteObjectives
+export default DeleteObjectives;

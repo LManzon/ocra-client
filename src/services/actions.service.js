@@ -20,3 +20,11 @@ export function EDIT_ACTIONS(body, token) {
     },
   });
 }
+
+export function DELETE_ACTIONS(body, token) {
+  return actionsService.post("/delete", body, {
+    headers: {
+      authorization: token,
+    },
+  });
+}

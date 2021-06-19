@@ -5,6 +5,7 @@ import * as CONSTS from "../../utils/consts";
 import * as ACTIONS_SERVICE from "../../services/actions.service";
 import { Link } from "react-router-dom";
 import EditAction from "./EditAction";
+import DeleteAction from "./DeleteAction";
 
 function ShowAction(props) {
   console.log("props show action:", props);
@@ -14,7 +15,6 @@ function ShowAction(props) {
 
   return (
     <div>
-
       {props.objective.action.map((event) => {
         return <EditAction {...event} key={event._id} />;
       })}

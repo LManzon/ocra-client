@@ -11,10 +11,11 @@ import EditObjective from "./EditObjectives";
 function ShowObjectives(props) {
   return (
     <div>
-
-
       {props.listOfObjectives.map((objective) => {
         return (
+
+
+
           <EditObjective
 
             getObjectives={props.getObjectives}

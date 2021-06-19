@@ -12,6 +12,7 @@ import { getLoggedIn, logout } from "./services/auth";
 import ProfilePage from "./components/Profile/Profile";
 import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
+import NavbarBottom from "./components/Navbar/NavbarBottom";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -93,6 +94,8 @@ export default function App() {
           authenticate={authenticate}
         />
       </Switch>
+      <NavbarBottom handleLogout={handleLogout} user={user} />
+
     </div>
   );
 }
