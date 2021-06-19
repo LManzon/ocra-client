@@ -47,24 +47,15 @@ function EditObjective(props) {
       });
   }
 
-  function deleteObjective(event, objectiveId) {
 
-    event.preventDefault();
-    const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
-    //  setForm({ ...form, [event.target.name]: event.target.value })
 
-    OBJECTIVES_SERVICE.DELETE_OBJECTIVE({ ...form, objectiveId }, accessToken)
-      .then((response) => {
-        console.log("response:", response);
-        // props.history.push(
-        //   `${PATHS.OBJECTIVES_PAGE}/${response.data.objective._id}`
-        // );
-      })
-      .catch((err) => {
-        console.error("err:");
-      });
+  function deleteObjective(props) {
+    console.log(props.objective._id)
+
+
   }
+
 
 
 
@@ -135,7 +126,7 @@ function EditObjective(props) {
         </button>
 
 
-        <button type="buttont" onClick={deleteObjective} name="delete">
+        <button type="button" onClick={() => deleteObjective(props)} name="delete">
           Delete
         </button>
 
