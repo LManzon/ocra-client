@@ -10,10 +10,12 @@ const NavbarBottom = (props) => {
         <nav className="navbarbottom">
 
             <span className="bottomnavtext">
-                <p className="creativeObjectives"> Create New Objective</p>
+                <h1 className="creativeObjectives">+</h1>
 
 
+                <span class="material-icons-outlined">
 
+                </span>
 
             </span>
         </nav>

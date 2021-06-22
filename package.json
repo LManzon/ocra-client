@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material/textfield": "^11.0.0",
     "axios": "^0.21.1",
+    "material-components-web": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
@@ -12,7 +14,15 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^13.1.9"
+    "@testing-library/user-event": "^13.1.9",
+    "css-loader": "^5.2.6",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.2.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
     "start": "react-scripts start",

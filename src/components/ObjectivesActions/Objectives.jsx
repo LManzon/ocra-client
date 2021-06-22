@@ -44,70 +44,80 @@ function Objectives(props) {
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Problem</label>
-          <input
-            type="text"
-            name="problem"
-            placeholder="I have a problem X"
-            onChange={handleChange}
-            value={form.problem}
-          />
-        </div>
-        <div>
-          <label>Enter your Objective</label>
-          <input
-            type="text"
-            name="objectiveInput"
-            placeholder="and I want to change Y"
-            onChange={handleChange}
-            value={form.objectiveInput}
-          />
-        </div>
-        <div>
-          <label>Key Results</label>
-          <input
-            type="text"
-            name="keyResult"
-            placeholder="X number/value for objective"
-            onChange={handleChange}
-            value={form.keyResult}
-          />
-        </div>
-        <div>
-          <label>Achieve by</label>
-          <input
-            type="date"
-            name="objectiveEndDate"
-            onChange={handleChange}
-            value={form.objectiveEndDate}
-          />
-        </div>
 
-        <div>
-          <label>Choose the category</label>
+          <label class="mdc-text-field mdc-text-field--filled">
+            <span class="mdc-text-field__ripple"></span>
+            <span class="mdc-floating-label" id="my-label-id">Hint text</span>
+            <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+              <span class="mdc-line-ripple"></span>
+</label>
 
-          <select name="category" onChange={handleChange} value={form.category}>
-            <option name="Career">Career</option>
-            <option name="Passion">Passion</option>
-            <option name="Relationship">Relationship</option>
-            <option name="Financial">Financial</option>
-            <option name="Wellbeing">Wellbeing</option>
-          </select>
-        </div>
-        <div>
-          <label>Want to share this with others to get help & advise?</label>
-          <select
-            name="visibility"
-            onChange={handleChange}
-            value={form.visibility}
-          >
-            <option name="Public">Public</option>
-            <option name="Private">Private</option>
-            <option name="Friends">Friends</option>
-          </select>
-        </div>
 
-        <button type="submit">Create Goal</button>
+
+            <label>Problem</label>
+            <input
+              type="text"
+              name="problem"
+              placeholder="I have a problem X"
+              onChange={handleChange}
+              value={form.problem}
+            />
+        </div>
+          <div>
+            <label>Enter your Objective</label>
+            <input
+              type="text"
+              name="objectiveInput"
+              placeholder="and I want to change Y"
+              onChange={handleChange}
+              value={form.objectiveInput}
+            />
+          </div>
+          <div>
+            <label>Key Results</label>
+            <input
+              type="text"
+              name="keyResult"
+              placeholder="X number/value for objective"
+              onChange={handleChange}
+              value={form.keyResult}
+            />
+          </div>
+          <div>
+            <label>Achieve by</label>
+            <input
+              type="date"
+              name="objectiveEndDate"
+              onChange={handleChange}
+              value={form.objectiveEndDate}
+            />
+          </div>
+
+          <div>
+            <label>Choose the category</label>
+
+            <select name="category" onChange={handleChange} value={form.category}>
+              <option name="Career">Career</option>
+              <option name="Passion">Passion</option>
+              <option name="Relationship">Relationship</option>
+              <option name="Financial">Financial</option>
+              <option name="Wellbeing">Wellbeing</option>
+            </select>
+          </div>
+          <div>
+            <label>Want to share this with others to get help & advise?</label>
+            <select
+              name="visibility"
+              onChange={handleChange}
+              value={form.visibility}
+            >
+              <option name="Public">Public</option>
+              <option name="Private">Private</option>
+              <option name="Friends">Friends</option>
+            </select>
+          </div>
+
+          <button type="submit">Create Goal</button>
       </form>
     </div>
   );
