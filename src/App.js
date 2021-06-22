@@ -94,8 +94,7 @@ export default function App() {
           authenticate={authenticate}
         />
       </Switch>
-      <NavbarBottom handleLogout={handleLogout} user={user} />
-
+      {/* <NavbarBottom handleLogout={handleLogout} user={user} /> */}
     </div>
   );
 }

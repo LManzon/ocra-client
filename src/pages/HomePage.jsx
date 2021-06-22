@@ -10,6 +10,11 @@ import * as CONSTS from "../utils/consts";
 function HomePage(props) {
   const { user } = props;
   const [listOfObjectives, setListOfObjectives] = React.useState([]);
+  const [displayAddObjective, setDisplayAddObjective] = React.useState(false);
+
+  function addObjToggle() {
+    setDisplayAddObjective(!displayAddObjective);
+  }
 
   function getObjectives() {
     const token = localStorage.getItem(CONSTS.ACCESS_TOKEN);
@@ -40,13 +45,21 @@ function HomePage(props) {
         <>
           {" "}
           <header className="App-header">
-            <Objectives user={user} getObjectives={getObjectives}></Objectives>
             <br></br>
             <h1>Your goals</h1>
             <ShowObjectives
               getObjectives={getObjectives}
               listOfObjectives={listOfObjectives}
             />
+            <br />
+
+            {displayAddObjective ? (
+              <Objectives user={user} getObjectives={getObjectives}>
+                {" "}
+              </Objectives>
+            ) : null}
+            <button onClick={addObjToggle}>+</button>
+            {/* <Objectives user={user} getObjectives={getObjectives}></Objectives> */}
           </header>{" "}
         </>
       ) : (

@@ -15,18 +15,20 @@ const Navbar = (props) => {
       <div className="nav__authLinks">
         {props.user ? (
           <>
-            <div className="navnameandpic">
-              <p style={{ color: "black" }}>{user.name}</p>
-              <img
-                src={user.profilePic}
-                width="50px"
-                alt={`Profile picture for ${user.name}`}
-              />
-            </div>
-
             <Link to={PATHS.PROFILE_PAGE} className="authLink">
-              Edit Profile
+              <div className="navnameandpic">
+                <p style={{ color: "black" }}>{user.name}</p>
+                <img
+                  src={user.profilePic}
+                  width="50px"
+                  alt={`Profile picture for ${user.name}`}
+                />
+              </div>
             </Link>
+
+            {/* <Link to={PATHS.PROFILE_PAGE} className="authLink">
+              Edit Profile
+            </Link> */}
             {/* <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
             </Link> */}
@@ -35,15 +37,15 @@ const Navbar = (props) => {
             </button>
           </>
         ) : (
-            <>
-              <Link to={PATHS.SIGNUPPAGE} className="authLink">
-                Signup
+          <>
+            <Link to={PATHS.SIGNUPPAGE} className="authLink">
+              Signup
             </Link>
-              <Link to={PATHS.LOGINPAGE} className="authLink">
-                Log In
+            <Link to={PATHS.LOGINPAGE} className="authLink">
+              Log In
             </Link>
-            </>
-          )}
+          </>
+        )}
       </div>
     </nav>
   );
