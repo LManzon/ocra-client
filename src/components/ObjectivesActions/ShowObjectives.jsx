@@ -16,6 +16,9 @@ function ShowObjectives(props) {
         console.log("newObjDataFormat:", newObjectiveEndDate);
 
         return (
+
+
+
           <EditObjective
             getObjectives={props.getObjectives}
             objective={objective}

@@ -9,7 +9,7 @@ function Objectives(props) {
     problem: "",
     objectiveInput: "",
     keyResult: "",
-    objectiveEndDate: "",
+    objectiveEndDate: 0,
     action: [],
     category: "",
     visibility: "",
@@ -29,7 +29,7 @@ function Objectives(props) {
 
     OBJECTIVE_SERVICE.ADD_OBJECTIVE({ ...form, user }, accessToken)
       .then((response) => {
-        console.log("response test add obj:", response);
+        console.log("response:", response);
         props.getObjectives();
       })
       .catch((err) => {
@@ -44,6 +44,10 @@ function Objectives(props) {
 
       <form onSubmit={handleSubmit}>
         <div>
+
+
+
+
           <label>Problem</label>
           <input
             type="text"
