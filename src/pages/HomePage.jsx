@@ -20,7 +20,8 @@ function HomePage(props) {
         },
       })
       .then((response) => {
-        console.log("response:", response);
+        console.log("response che palleeeeeeee!!!!!!:", response);
+
         setListOfObjectives(response.data);
       })
       .catch((err) => {
@@ -43,18 +44,16 @@ function HomePage(props) {
             <br></br>
             <h1>Your goals</h1>
             <ShowObjectives
-
-
               getObjectives={getObjectives}
               listOfObjectives={listOfObjectives}
             />
           </header>{" "}
         </>
       ) : (
-          <>
-            <h1> Welcome to ocra</h1>
-          </>
-        )}
+        <>
+          <h1> Welcome to ocra</h1>
+        </>
+      )}
     </div>
   );
 }

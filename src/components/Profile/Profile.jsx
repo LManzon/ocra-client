@@ -5,7 +5,7 @@ import * as CONSTS from "../../utils/consts";
 import * as PROFILE_SERVICE from "../../services/profile.service.js";
 import * as PROFILE_PICTURE from "../../services/profile.picture.js";
 import Objectives from "../ObjectivesActions/Objectives";
-
+import "./Profile.css";
 import axios from "axios";
 import ProtectedRoute from "../../routing-components/ProtectedRoute";
 
@@ -26,14 +26,29 @@ export default function ProfilePage(props) {
   function deleteProfile() {}
 
   return (
-    <div>
-      <h1>{user.name}</h1>
-      <img
-        src={user.profilePic}
-        width="200px"
-        alt={`Profile picture for ${user.name}`}
-      />
-      <button onClick={pictureToggle}> Update Picture</button>
+    <div className="profilePage">
+      <div class="editProfile">
+        <img
+          src={user.profilePic}
+          width="200px"
+          alt={`Profile picture for ${user.name}`}
+          class="profilePic"
+        />
+        <h1 class="profileName">{user.name}</h1>
+      </div>
+      <div>
+        <br />
+        <UpdateProfile user={user} authenticate={authenticate} />
+        <br />
+        <br />
+        <UpdatePicture
+          user={user}
+          setUser={setUser}
+          authenticate={authenticate}
+        />
+      </div>
+
+      {/* <button onClick={pictureToggle}> Update Picture</button>
       {displayUpdatePicture ? (
         <UpdatePicture
           user={user}
@@ -41,18 +56,14 @@ export default function ProfilePage(props) {
           authenticate={authenticate}
         />
       ) : null}
+      <br />
       <button onClick={profileToggle}> Update Profile</button>
       {displayUpdateProfile ? (
         <UpdateProfile user={user} authenticate={authenticate} />
-      ) : null}
+      ) : null} */}
       {/* <button onClick={passwordToggle}> Change Password</button>
       {displayUpdatePassword && <UpdatePassword authenticate={authenticate} />} */}
-      <button onClick={deleteProfile}> Delete Account</button>
-
-      <br />
-      <div>
-        <Objectives />
-      </div>
+      {/* <button onClick={deleteProfile}> Delete Account</button> */}
     </div>
   );
 }
@@ -90,8 +101,8 @@ function UpdateProfile(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} class="editForm">
+      <div class="editValue">
         <label>Name</label>
         <input
           name="name"
@@ -100,7 +111,7 @@ function UpdateProfile(props) {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div class="editValue">
         <label>Surname</label>
         <input
           name="surname"
@@ -109,7 +120,7 @@ function UpdateProfile(props) {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div class="editValue">
         <label>email</label>
         <input
           name="email"

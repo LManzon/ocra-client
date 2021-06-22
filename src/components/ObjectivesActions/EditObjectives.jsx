@@ -10,8 +10,9 @@ import ShowObjectives from "./ShowObjectives";
 import DeleteObjectives from "./DeleteObjectives";
 
 function EditObjective(props) {
-  const { objective } = props;
+  const { objective, newObjectiveEndDate } = props;
   console.log("propsXXX:", objective);
+  console.log("propsXXX222:", newObjectiveEndDate);
   console.log("checkProps:", props);
   const objectiveId = objective._id;
   console.log("check objectiveId:", objectiveId);
@@ -22,7 +23,7 @@ function EditObjective(props) {
     problem: objective.problem,
     objectiveInput: objective.objectiveInput,
     keyResult: objective.keyResult,
-    objectiveEndDate: objective.objectiveEndDate || "",
+    objectiveEndDate: newObjectiveEndDate,
     category: objective.category,
     visibility: objective.visibility,
   });
@@ -118,7 +119,7 @@ function EditObjective(props) {
           <option name="Career">Career</option>
           <option name="Passion">Passion</option>
           <option name="Relationship">Relationship</option>
-          <option name="Finance">Finance</option>
+          <option name="Financial">Financial</option>
           <option name="Wellbeing">Wellbeing</option>
         </select>
 
