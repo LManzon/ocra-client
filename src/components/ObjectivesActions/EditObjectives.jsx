@@ -129,7 +129,6 @@ function EditObjective(props) {
           value={form.visibility}
           onChange={handleChange}
         >
-          cd
           <option name="Public">Public</option>
           <option name="Private">Private</option>
           <option name="Friends">Friends</option>
