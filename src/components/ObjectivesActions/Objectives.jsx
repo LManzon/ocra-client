@@ -2,6 +2,7 @@ import React from "react";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVE_SERVICE from "../../services/objective.service";
+import TextField from "./TextField"
 
 function Objectives(props) {
   const { user } = props;
@@ -46,10 +47,13 @@ function Objectives(props) {
         <div>
 
 
+          <TextField></TextField>
 
 
-          <label>Problem</label>
+
+          <label class="mdc-text-field mdc-text-field--filled">Problem</label>
           <input
+            class="mdc-text-field__input"
             type="text"
             name="problem"
             placeholder="I have a problem X"
@@ -59,7 +63,7 @@ function Objectives(props) {
         </div>
         <div>
           <label>Enter your Objective</label>
-          <input
+          <TextField id="filled-basic"
             type="text"
             name="objectiveInput"
             placeholder="and I want to change Y"
