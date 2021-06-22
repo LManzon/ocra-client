@@ -8,6 +8,33 @@ import Actions from "../../components/ObjectivesActions/Actions";
 import ShowAction from "./ShowActions";
 import ShowObjectives from "./ShowObjectives";
 import DeleteObjectives from "./DeleteObjectives";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
+import Card from './Card.jsx'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 function EditObjective(props) {
   const { objective, newObjectiveEndDate } = props;
@@ -72,80 +99,86 @@ function EditObjective(props) {
         });
     }
     */
-
+  const classes = useStyles();
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e, objective._id)}>
-        <input
-          type="text"
-          name="problem"
-          // onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          value={form.problem}
-        />
+      <div>
+        <form onSubmit={(e) => handleSubmit(e, objective._id)}>
 
-        <input
-          type="text"
-          name="objectiveInput"
-          placeholder="and I want to change Y"
-          // onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          value={form.objectiveInput}
-        />
+          <TextField id="outlined-basic" label="Problem" variant="outlined"
+            type="text"
+            name="problem"
+            // onKeyDown={handleKeyDown}
+            onChange={handleChange}
+            value={form.problem}
+          />
 
-        <input
-          type="text"
-          name="keyResult"
-          placeholder="X number/value for objective"
-          // onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          value={form.keyResult}
-        />
+          <input
+            type="text"
+            name="objectiveInput"
+            placeholder="and I want to change Y"
+            // onKeyDown={handleKeyDown}
+            onChange={handleChange}
+            value={form.objectiveInput}
+          />
 
-        <input
-          type="date"
-          name="objectiveEndDate"
-          // onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          value={form.objectiveEndDate}
-        />
+          <input
+            type="text"
+            name="keyResult"
+            placeholder="X number/value for objective"
+            // onKeyDown={handleKeyDown}
+            onChange={handleChange}
+            value={form.keyResult}
+          />
 
-        <select
-          name="category"
-          // onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          value={form.category}
-        >
-          <option name="Career">Career</option>
-          <option name="Passion">Passion</option>
-          <option name="Relationship">Relationship</option>
-          <option name="Financial">Financial</option>
-          <option name="Wellbeing">Wellbeing</option>
-        </select>
+          <input
+            type="date"
+            name="objectiveEndDate"
+            // onKeyDown={handleKeyDown}
+            onChange={handleChange}
+            value={form.objectiveEndDate}
+          />
 
-        <select
-          name="visibility"
-          // onKeyDown={handleKeyDown}
-          value={form.visibility}
-          onChange={handleChange}
-        >
-          <option name="Public">Public</option>
-          <option name="Private">Private</option>
-          <option name="Friends">Friends</option>
-        </select>
+          <select
+            name="category"
+            // onKeyDown={handleKeyDown}
+            onChange={handleChange}
+            value={form.category}
+          >
+            <option name="Career">Career</option>
+            <option name="Passion">Passion</option>
+            <option name="Relationship">Relationship</option>
+            <option name="Financial">Financial</option>
+            <option name="Wellbeing">Wellbeing</option>
+          </select>
 
-        <button type="submit" name="edit">
-          Edit
+          <select
+            name="visibility"
+            // onKeyDown={handleKeyDown}
+            value={form.visibility}
+            onChange={handleChange}
+          >
+            <option name="Public">Public</option>
+            <option name="Private">Private</option>
+            <option name="Friends">Friends</option>
+          </select>
+
+          <button type="submit" name="edit">
+            Edit
         </button>
-      </form>
+        </form>
 
-      <DeleteObjectives
-        objectiveId={objectiveId}
-        getObjectives={props.getObjectives}
-      ></DeleteObjectives>
-      <Actions getObjectives={props.getObjectives} objective={objective} />
-      <ShowAction getObjectives={props.getObjectives} objective={objective} />
+        <DeleteObjectives
+          objectiveId={objectiveId}
+          getObjectives={props.getObjectives}
+        ></DeleteObjectives>
+        <Actions getObjectives={props.getObjectives} objective={objective} />
+        <ShowAction getObjectives={props.getObjectives} objective={objective} />
+      </div>
+
     </>
+
+
   );
 }
 
