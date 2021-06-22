@@ -44,10 +44,6 @@ function Objectives(props) {
 
       <form onSubmit={handleSubmit}>
         <div>
-
-
-
-
           <label>Problem</label>
           <input
             type="text"
