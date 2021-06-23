@@ -17,11 +17,14 @@ const Navbar = (props) => {
           <>
             <Link to={PATHS.PROFILE_PAGE} className="authLink">
               <div className="navnameandpic">
-                <p style={{ color: "black" }}>{user.name}</p>
+                <p style={{ color: "white" }}>
+                  Hey {user.name}, are you ready to smash some goals today?
+                </p>
                 <img
                   src={user.profilePic}
                   width="50px"
                   alt={`Profile picture for ${user.name}`}
+                  class="avatar"
                 />
               </div>
             </Link>

@@ -1,5 +1,5 @@
 nav {
-  background-color: white;
+  background-color: black;
   padding-left: 20px;
   padding-right: 30x;
   display: flex;
@@ -8,34 +8,31 @@ nav {
   padding-bottom: 0px;
   padding-top: 0px;
   border-bottom: 1px solid rgb(175, 175, 175);
-
-
 }
 
 .nav__projectName {
-  color: #000000;
+  color: white;
   text-decoration: none;
   font-size: 22px;
   padding-left: 10px;
-  
 }
 
 .authLink {
-  color: #61dafb;
+  color: white;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
- 
 }
 
-.nav__authLinks{ 
+.nav__authLinks {
   display: flex;
+  align-items: center;
 
-  color: black !important
-  
+  color: black !important;
 }
 
-.navnameandpic{ 
+.navnameandpic {
   display: flex;
+  align-items: center;
 }
 
 .authLink + .authLink {
@@ -43,7 +40,7 @@ nav {
 }
 
 .authLink:hover {
-  color: #000000;
+  color: white;
 }
 
 .nav-logoutbtn {
@@ -51,12 +48,13 @@ nav {
   font-weight: inherit;
   padding: 0.5em 1em;
   margin-left: 1em;
-  background-color: #5595ff;
-  box-shadow: 0 0 5px 0 aliceblue;
+  margin-right: 20px;
+  background-color: rgb(146, 45, 247);
+  /* box-shadow: 0 0 5px 0 aliceblue; */
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  color: #2e3236;
+  color: white;
   transition: all 0.2s ease-in-out;
   position: sticky;
   max-height: 35px;
@@ -66,25 +64,29 @@ nav {
 
 .nav-logoutbtn:hover {
   transform: scale(1.05);
-  background-color: #d13e3e;
+  background-color: white;
+  color: black;
 }
 
-.navbarbottom { 
-justify-content: center;
-background-color:rgb(209, 209, 209);
-color: white;
-position: fixed;
-border-top: 1px solid rgb(175, 175, 175);
-bottom: 0;
-width: 100%;
-
+.navbarbottom {
+  justify-content: center;
+  background-color: rgb(209, 209, 209);
+  color: white;
+  position: fixed;
+  border-top: 1px solid rgb(175, 175, 175);
+  bottom: 0;
+  width: 100%;
 }
 
-.bottomnavtext{ 
-display: flex;
-align-items: center;
-color: white !important;
-
-
+.bottomnavtext {
+  display: flex;
+  align-items: center;
+  color: white !important;
 }
 
+.avatar {
+  border-radius: 50%;
+  margin: 15px;
+  height: 50px;
+  width: 50px;
+}

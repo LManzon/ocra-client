@@ -14,6 +14,7 @@ import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 import NavbarBottom from "./components/Navbar/NavbarBottom";
 
+
 export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

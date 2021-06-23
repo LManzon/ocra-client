@@ -2,6 +2,17 @@ import React from "react";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVE_SERVICE from "../../services/objective.service";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
 
 function Objectives(props) {
   const { user } = props;
@@ -37,7 +48,7 @@ function Objectives(props) {
         console.error(err.response);
       });
   }
-
+  const classes = useStyles();
   return (
     <div>
       <h1>Add a new objective</h1>
@@ -46,6 +57,7 @@ function Objectives(props) {
         <div>
           <label>Problem</label>
           <input
+            class="mdc-text-field__input"
             type="text"
             name="problem"
             placeholder="I have a problem X"
@@ -54,13 +66,16 @@ function Objectives(props) {
           />
         </div>
         <div>
-          <label>Enter your Objective</label>
-          <input
+          {/* <label>Enter your Objective</label> */}
+          <TextField
             type="text"
             name="objectiveInput"
             placeholder="and I want to change Y"
             onChange={handleChange}
             value={form.objectiveInput}
+            id="outlined-basic"
+            label="Enter your Objetictive"
+            variant="outlined"
           />
         </div>
         <div>

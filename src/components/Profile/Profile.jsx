@@ -8,6 +8,28 @@ import Objectives from "../ObjectivesActions/Objectives";
 import "./Profile.css";
 import axios from "axios";
 import ProtectedRoute from "../../routing-components/ProtectedRoute";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import IconButton from "@material-ui/core/IconButton";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+  input: {
+    display: "none",
+  },
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 export default function ProfilePage(props) {
   const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
@@ -34,18 +56,35 @@ export default function ProfilePage(props) {
           alt={`Profile picture for ${user.name}`}
           class="profilePic"
         />
-        <h1 class="profileName">{user.name}</h1>
+        <div>
+          <h3 class="profileInfo">
+            {user.name} {user.surname}
+          </h3>
+          <h3 class="profileInfo">{user.email}</h3>
+        </div>
       </div>
       <div>
+        <div class="updatePic">
+          {" "}
+          <p>
+            click on the phocamera, select your new amazing new amazing profile
+            picture, <br />
+            then click upload to publish it!
+          </p>
+          <UpdatePicture
+            user={user}
+            setUser={setUser}
+            authenticate={authenticate}
+          />{" "}
+        </div>
+
         <br />
+        <p class="textEditForm">
+          change your profile info, the click save to publish
+        </p>
         <UpdateProfile user={user} authenticate={authenticate} />
+
         <br />
-        <br />
-        <UpdatePicture
-          user={user}
-          setUser={setUser}
-          authenticate={authenticate}
-        />
       </div>
 
       {/* <button onClick={pictureToggle}> Update Picture</button>
@@ -99,43 +138,64 @@ function UpdateProfile(props) {
         console.error(err.response);
       });
   }
-
+  const classes = useStyles();
   return (
     <form onSubmit={handleSubmit} class="editForm">
       <div class="editValue">
-        <label>Name</label>
-        <input
+        {/* <label>Name</label> */}
+        <TextField
           name="name"
-          placeholder="name"
+          placeholder="Luca"
           value={form.name}
           onChange={handleChange}
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
         />
       </div>
       <div class="editValue">
-        <label>Surname</label>
-        <input
+        {/* <label>Surname</label> */}
+        <TextField
           name="surname"
           placeholder="surname"
           value={form.surname}
           onChange={handleChange}
+          id="outlined-basic"
+          label="Surname"
+          variant="outlined"
         />
       </div>
       <div class="editValue">
-        <label>email</label>
-        <input
+        {/* <label>email</label> */}
+        <TextField
           name="email"
-          placeholder="email"
+          placeholder="email@email.com"
           value={form.email}
           onChange={handleChange}
+          id="outlined-basic"
+          label="email"
+          variant="outlined"
         />
       </div>
 
-      <button>Update Profile</button>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="large"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+      >
+        Save
+      </Button>
+      {/* <button>Update Profile</button> */}
     </form>
   );
 }
 
 function UpdatePicture(props) {
+  const classes = useStyles();
+
   const { user, setUser } = props;
   const [newPicture, setNewPicture] = React.useState(null);
 
@@ -168,8 +228,39 @@ function UpdatePicture(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="file" onChange={handleChange} />
-      <button type="submit"> Update Picture</button>
+      {/* <input type="file" onChange={handleChange} /> */}
+
+      <input
+        accept="image/*"
+        className={classes.input}
+        id="icon-button-file"
+        type="file"
+        onChange={handleChange}
+      />
+
+      <label htmlFor="icon-button-file">
+        <IconButton
+          // type="submit"
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+          onChange={handleChange}
+        >
+          <PhotoCamera />
+        </IconButton>
+
+        <Button
+          type="submit"
+          variant="contained"
+          color="default"
+          className={classes.button}
+          startIcon={<CloudUploadIcon />}
+        >
+          Upload
+        </Button>
+
+        {/* <button type="submit"> Update Picture</button> */}
+      </label>
     </form>
   );
 }

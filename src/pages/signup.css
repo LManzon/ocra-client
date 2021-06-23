@@ -1,0 +1,31 @@
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+  height: 50vh;
+}
+
+#textFieldSignup {
+  margin: 15px;
+}
+
+#input-email {
+  width: 50vh;
+}
+
+#input-password {
+  width: 50vh;
+}
+
+#input-surname {
+  width: 50vh;
+}
+
+#input-name {
+  width: 50vh;
+}
+
+#title {
+  color: rgb(146, 45, 247);
+}
