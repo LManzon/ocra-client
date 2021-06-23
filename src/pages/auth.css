@@ -11,3 +11,13 @@ button.button__submit {
   max-width: 100px;
   margin: 1em auto;
 }
+
+
+.fab {
+  margin: 0;
+  top: "auto";
+  left: 20;
+  bottom: 20;
+  right: "auto";
+  position: "fixed"
+};

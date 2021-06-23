@@ -6,6 +6,11 @@ import ShowObjectives from "../components/ObjectivesActions/ShowObjectives";
 import Actions from "../components/ObjectivesActions/Actions";
 import axios from "axios";
 import * as CONSTS from "../utils/consts";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 function HomePage(props) {
   const { user } = props;
@@ -46,7 +51,6 @@ function HomePage(props) {
           {" "}
           <header className="App-header">
             <br></br>
-            <h1>Your goals</h1>
             <ShowObjectives
               getObjectives={getObjectives}
               listOfObjectives={listOfObjectives}
@@ -58,15 +62,18 @@ function HomePage(props) {
                 {" "}
               </Objectives>
             ) : null}
-            <button onClick={addObjToggle}>+</button>
+            <Fab
+              className="fab"
+              color="primary" aria-label="add" onClick={addObjToggle}>+</Fab>
             {/* <Objectives user={user} getObjectives={getObjectives}></Objectives> */}
           </header>{" "}
         </>
+
       ) : (
-        <>
-          <h1> Welcome to ocra</h1>
-        </>
-      )}
+          <>
+
+          </>
+        )}
     </div>
   );
 }

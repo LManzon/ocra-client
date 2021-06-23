@@ -18,12 +18,23 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import Card from './Card.jsx'
+import Tooltip from '@material-ui/core/Tooltip';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { sizing } from '@material-ui/system';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '100%',
 
     },
     formControl: {
@@ -33,8 +44,25 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      flexBasis: '33.33%',
+      flexShrink: 0,
+    },
+    secondaryHeading: {
+      fontSize: theme.typography.pxToRem(15),
+      color: theme.palette.text.secondary,
+    },
+    TextField: {
+
+      width: '1000',
+    }
   },
 }));
+
+
+
 
 function EditObjective(props) {
   const { objective, newObjectiveEndDate } = props;
@@ -105,75 +133,118 @@ function EditObjective(props) {
       <div>
         <form onSubmit={(e) => handleSubmit(e, objective._id)}>
 
-          <TextField id="outlined-basic" label="Problem" variant="outlined"
-            type="text"
-            name="problem"
-            // onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            value={form.problem}
-          />
 
-          <input
-            type="text"
-            name="objectiveInput"
-            placeholder="and I want to change Y"
-            // onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            value={form.objectiveInput}
-          />
+          <Accordion >
 
-          <input
-            type="text"
-            name="keyResult"
-            placeholder="X number/value for objective"
-            // onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            value={form.keyResult}
-          />
 
-          <input
-            type="date"
-            name="objectiveEndDate"
-            // onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            value={form.objectiveEndDate}
-          />
+            <Box fullWidth="True"
+            >
+              <AccordionSummary
 
-          <select
-            name="category"
-            // onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            value={form.category}
-          >
-            <option name="Career">Career</option>
-            <option name="Passion">Passion</option>
-            <option name="Relationship">Relationship</option>
-            <option name="Financial">Financial</option>
-            <option name="Wellbeing">Wellbeing</option>
-          </select>
+                expandIcon={<ExpandMoreIcon />}
+                // aria-controls="panel1bh-content"
+                aria-controls="additional-actions2-content"
+                id="panel1bh-header">
+                <FormControlLabel
+                  aria-label="Acknowledge"
+                  onClick={(event) => event.stopPropagation()}
+                  onFocus={(event) => event.stopPropagation()}
+                  control={<Checkbox />}
 
-          <select
-            name="visibility"
-            // onKeyDown={handleKeyDown}
-            value={form.visibility}
-            onChange={handleChange}
-          >
-            <option name="Public">Public</option>
-            <option name="Private">Private</option>
-            <option name="Friends">Friends</option>
-          </select>
+                />
 
-          <button type="submit" name="edit">
-            Edit
+
+                <TextField id="outlined-basic" label="Problem" variant="outlined"                   fullWidth
+
+                  type="text"
+                  name="problem"
+                  // onKeyDown={handleKeyDown}
+                  onChange={handleChange}
+                  value={form.problem}
+
+                />
+
+
+
+              </AccordionSummary>
+            </Box>
+
+            <AccordionDetails>
+              <Typography>
+
+
+                <TextField id="outlined-basic" label="Objective" variant="outlined"
+              
+                    type="text"
+                    name="objectiveInput"
+                    placeholder="and I want to change Y"
+                    onChange={handleChange}
+                    value={form.objectiveInput}
+                    fullWidth 
+                
+                />
+
+
+                <TextField id="outlined-basic" label="Key Result" variant="outlined"
+                  type="text"
+                  name="keyResult"
+                  placeholder="X number/value for objective"
+                  // onKeyDown={handleKeyDown}
+                  onChange={handleChange}
+                  value={form.keyResult}
+                />
+
+                <TextField id="outlined-basic" variant="outlined"
+                  type="date"
+                  id="date"
+                  name="objectiveEndDate"
+                  // onKeyDown={handleKeyDown}
+                  onChange={handleChange}
+                  value={form.objectiveEndDate}
+                />
+
+                <select
+                  name="category"
+                  // onKeyDown={handleKeyDown}
+                  onChange={handleChange}
+                  value={form.category}
+                >
+                  <option name="Career">Career</option>
+                  <option name="Passion">Passion</option>
+                  <option name="Relationship">Relationship</option>
+                  <option name="Financial">Financial</option>
+                  <option name="Wellbeing">Wellbeing</option>
+                </select>
+
+                <select
+                  name="visibility"
+                  // onKeyDown={handleKeyDown}
+                  value={form.visibility}
+                  onChange={handleChange}
+                >
+                  <option name="Public">Public</option>
+                  <option name="Private">Private</option>
+                  <option name="Friends">Friends</option>
+                </select>
+
+                <button type="submit" name="edit">
+                  Edit
         </button>
-        </form>
 
-        <DeleteObjectives
-          objectiveId={objectiveId}
-          getObjectives={props.getObjectives}
-        ></DeleteObjectives>
-        <Actions getObjectives={props.getObjectives} objective={objective} />
-        <ShowAction getObjectives={props.getObjectives} objective={objective} />
+
+                <DeleteObjectives
+                  objectiveId={objectiveId}
+                  getObjectives={props.getObjectives}
+                ></DeleteObjectives>
+
+                <Actions  getObjectives={props.getObjectives} objective={objective} />
+                <ShowAction getObjectives={props.getObjectives} objective={objective} />
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+
+        </form>
+        <br />
       </div>
 
     </>
