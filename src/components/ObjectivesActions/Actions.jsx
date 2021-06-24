@@ -52,6 +52,9 @@ function Actions(props) {
       <div className="taskNameAndStatus">
 
         <div>
+
+ 
+
         <TextField id="outlined-basic"  label="Task" variant="outlined"               type="text"
             name="action"
             placeholder="I need to do this"
@@ -76,7 +79,7 @@ function Actions(props) {
         </div>
 
 
-        <button  className="CreateTask">Create Task</button>
+        <button  className="CreateTask" type="submit">Create Task</button>
         <br></br>        <br></br>
 
       </form>
