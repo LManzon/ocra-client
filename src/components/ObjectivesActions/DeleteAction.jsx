@@ -1,7 +1,7 @@
 import React from "react";
 import * as ACTIONS_SERVICE from "../../services/actions.service";
 import * as CONSTS from "../../utils/consts";
-import * as PATHS from "../../utils/paths";
+// import * as PATHS from "../../utils/paths";
 
 export default function DeleteAction(props) {
   // console.log("delete action props:", props);

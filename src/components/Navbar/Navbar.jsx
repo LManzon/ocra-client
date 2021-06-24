@@ -23,7 +23,7 @@ const Navbar = (props) => {
                 <img
                   src={user.profilePic}
                   width="50px"
-                  alt={`Profile picture for ${user.name}`}
+                  // alt={`Profile picture for ${user.name}`}
                   class="avatar"
                 />
               </div>
