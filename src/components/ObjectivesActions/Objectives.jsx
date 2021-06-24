@@ -43,7 +43,7 @@ function Objectives(props) {
     objectiveEndDate: 0,
     action: [],
     category: "",
-    visibility: "",
+    // visibility: "",
   });
 
   function handleChange(event) {
