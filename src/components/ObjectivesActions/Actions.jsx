@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 function Actions(props) {
   const { objective } = props;
@@ -52,8 +53,11 @@ function Actions(props) {
       <div className="taskNameAndStatus">
 
         <div>
-
- 
+{/* 
+        <FormControlLabel
+              onSubmit={(e) => handleSubmit(e, objective._id)}
+             
+            /> */}
 
         <TextField id="outlined-basic"  label="Task" variant="outlined"               type="text"
             name="action"
