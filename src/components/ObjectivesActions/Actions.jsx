@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 function Actions(props) {
   const { objective } = props;
@@ -50,6 +51,12 @@ function Actions(props) {
       <form onSubmit={handleSubmit}>
         <div className="taskNameAndStatus">
           <div>
+            {/* 
+        <FormControlLabel
+              onSubmit={(e) => handleSubmit(e, objective._id)}
+             
+            /> */}
+
             <TextField
               id="outlined-basic"
               label="Task"
@@ -75,7 +82,7 @@ function Actions(props) {
           </FormControl> */}
           </div>
         </div>
-        <button type="submit" className="CreateTask">
+        <button className="CreateTask" type="submit">
           Create Task
         </button>
         <br></br> <br></br>

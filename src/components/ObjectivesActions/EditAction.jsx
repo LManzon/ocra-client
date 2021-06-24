@@ -62,7 +62,7 @@ function EditAction(props) {
       <Select name="status" /*value={form.status}*/ onChange={handleChange} >
         <MenuItem value="Not Started" name="Not Started">Not Started</MenuItem>
         <MenuItem value="In-Progress" name="In-Progress">In-progress</MenuItem>
-        <MenuItem value="Completed "name="Completed">Completed</MenuItem>
+        <MenuItem value="Completed" name="Completed">Completed</MenuItem>
       </Select>
 
 
