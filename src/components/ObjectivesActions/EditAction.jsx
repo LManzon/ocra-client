@@ -1,21 +1,13 @@
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
 import React from "react";
-import axios from "axios";
-import * as PATHS from "../../utils/paths";
-import * as CONSTS from "../../utils/consts";
 import * as ACTIONS_SERVICE from "../../services/actions.service";
-import { Link } from "react-router-dom";
-import Actions from "../../components/ObjectivesActions/Actions";
-import ShowAction from "./ShowActions";
-import ShowObjectives from "./ShowObjectives";
+import * as CONSTS from "../../utils/consts";
 import DeleteAction from "./DeleteAction";
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import './Objectives.css'
-
+import "./Objectives.css";
 
 function EditAction(props) {
   console.log("edit Action props:", props);
@@ -49,27 +41,38 @@ function EditAction(props) {
       });
   }
   return (
-   <div>
-   <form onSubmit={(e) => handleSubmit(e, props._id)}>
-        <TextField id="outlined-basic"  label="Task" variant="outlined"               type="text"
-        type="text"
-        name="action"
-        onChange={handleChange}
-        value={form.action}
-      />
-        <FormControl variant="outlined"  id="outlined-basic" >
-<InputLabel id="demo-simple-select-outlined-label" >Status</InputLabel>
-      <Select name="status" /*value={form.status}*/ onChange={handleChange} >
-        <MenuItem value="Not Started" name="Not Started">Not Started</MenuItem>
-        <MenuItem value="In-Progress" name="In-Progress">In-progress</MenuItem>
-        <MenuItem value="Completed" name="Completed">Completed</MenuItem>
-      </Select>
+    <div>
+      <form onSubmit={(e) => handleSubmit(e, props._id)}>
+        <TextField
+          id="outlined-basic"
+          label="Task"
+          variant="outlined"
+          type="text"
+          type="text"
+          name="action"
+          onChange={handleChange}
+          value={form.action}
+        />
+        <FormControl variant="outlined" id="outlined-basic">
+          <InputLabel id="demo-simple-select-outlined-label">Status</InputLabel>
+          <Select name="status" /*value={form.status}*/ onChange={handleChange}>
+            <MenuItem value="Not Started" name="Not Started">
+              Not Started
+            </MenuItem>
+            <MenuItem value="In-Progress" name="In-Progress">
+              In-progress
+            </MenuItem>
+            <MenuItem value="Completed" name="Completed">
+              Completed
+            </MenuItem>
+          </Select>
 
-
-      <button className="EditAction" type="submit">Edit Action</button>
-      </FormControl>
-      <DeleteAction actionId={actionId} getObjectives={props.getObjectives} />
-    </form>
+          <button className="EditAction" type="submit">
+            Edit Action
+          </button>
+        </FormControl>
+        <DeleteAction actionId={actionId} getObjectives={props.getObjectives} />
+      </form>
     </div>
   );
 }

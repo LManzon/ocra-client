@@ -1,37 +1,14 @@
 import React from "react";
-import axios from "axios";
-import * as PATHS from "../../utils/paths";
-import * as CONSTS from "../../utils/consts";
-import * as OBJECTIVES_SERVICE from "../../services/objective.service";
-import { Link } from "react-router-dom";
-import Actions from "../../components/ObjectivesActions/Actions";
-import ShowAction from "./ShowActions";
 import EditObjective from "./EditObjectives";
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputBase from '@material-ui/core/InputBase';
-import Button from '@material-ui/core/Button';
-
-
-
-
 
 function ShowObjectives(props) {
   return (
     <div>
       {props.listOfObjectives.map((objective) => {
         const newObjectiveEndDate = objective.objectiveEndDate.split("T")[0];
-        console.log("newObjDataFormat:", newObjectiveEndDate);
+        //    console.log("newObjDataFormat:", newObjectiveEndDate);
 
         return (
-
-
-
           <EditObjective
             getObjectives={props.getObjectives}
             objective={objective}

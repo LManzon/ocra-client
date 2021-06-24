@@ -1,22 +1,11 @@
-import React from "react";
-import * as PATHS from "../../utils/paths";
-import * as CONSTS from "../../utils/consts";
-import * as OBJECTIVE_SERVICE from "../../services/objective.service";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import InputBase from "@material-ui/core/InputBase";
-import Button from "@material-ui/core/Button";
-import Styles from "./Objectives.css";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import EditIcon from "@material-ui/icons/Edit";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import NavigationIcon from "@material-ui/icons/Navigation";
+import React from "react";
+import * as OBJECTIVE_SERVICE from "../../services/objective.service";
+import * as CONSTS from "../../utils/consts";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,7 +132,6 @@ function Objectives(props) {
             value={form.category}
             fullWidth
             // defaultValue="Career"
-           
           >
             <MenuItem value="Career" name="Career">
               Career
@@ -159,8 +147,8 @@ function Objectives(props) {
           </Select>
         </div>
         <br></br>
-        <div>
-          {/* <Select
+        {/* <div>
+          <Select
             style={{ width: 400 }}
             label="Shars"
             id="demo-simple-select-outlined"
@@ -168,7 +156,7 @@ function Objectives(props) {
             onChange={handleChange}
             value={form.visibility}
           >
-            <MenuItem value="Public" name="Public" >
+            <MenuItem value="Public" name="Public">
               Public
             </MenuItem>
             <MenuItem value="Career" name="Private">
@@ -177,8 +165,8 @@ function Objectives(props) {
             <MenuItem value="Friends" name="Friends">
               Friends
             </MenuItem>
-          </Select> */}
-        </div>{" "}
+          </Select>
+        </div>{" "} */}
         <br></br>
         <Button
           style={{ width: 410, height: 45 }}

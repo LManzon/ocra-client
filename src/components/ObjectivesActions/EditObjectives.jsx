@@ -1,34 +1,22 @@
-import React from "react";
-import axios from "axios";
-import * as PATHS from "../../utils/paths";
-import * as CONSTS from "../../utils/consts";
-import * as OBJECTIVES_SERVICE from "../../services/objective.service";
-import { Link } from "react-router-dom";
-import Actions from "../../components/ObjectivesActions/Actions";
-import ShowAction from "./ShowActions";
-import ShowObjectives from "./ShowObjectives";
-import DeleteObjectives from "./DeleteObjectives";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import InputBase from "@material-ui/core/InputBase";
-import Button from "@material-ui/core/Button";
-import Card from "./Card.jsx";
-import Tooltip from "@material-ui/core/Tooltip";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { sizing } from "@material-ui/system";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Box from "@material-ui/core/Box";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import React from "react";
+import Actions from "../../components/ObjectivesActions/Actions";
+import * as OBJECTIVES_SERVICE from "../../services/objective.service";
+import * as CONSTS from "../../utils/consts";
+import DeleteObjectives from "./DeleteObjectives";
 import "./Objectives.css";
+import ShowAction from "./ShowActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,11 +49,11 @@ const useStyles = makeStyles((theme) => ({
 
 function EditObjective(props) {
   const { objective, newObjectiveEndDate } = props;
-  console.log("propsXXX:", objective);
-  console.log("propsXXX222:", newObjectiveEndDate);
-  console.log("checkProps:", props);
+  // console.log("propsXXX:", objective);
+  // console.log("propsXXX222:", newObjectiveEndDate);
+  // console.log("checkProps:", props);
   const objectiveId = objective._id;
-  console.log("check objectiveId:", objectiveId);
+  // console.log("check objectiveId:", objectiveId);
   const [displayAddAction, setDisplayAddAction] = React.useState(false);
   const [action, setaction] = React.useState([]);
 
@@ -88,6 +76,7 @@ function EditObjective(props) {
   function handleSubmit(event, objectiveId) {
     console.log("objectiveId:", objectiveId);
     event.preventDefault();
+    return;
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
     //  setForm({ ...form, [event.target.name]: event.target.value })
@@ -126,40 +115,39 @@ function EditObjective(props) {
   return (
     <>
       <div>
-<form onSubmit={(e) => handleSubmit(e, objective._id)}>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            // aria-controls="panel1bh-content"
-            aria-controls="additional-actions2-content"
-            id="panel1bh-header"
-          >
-            <FormControlLabel
-              onSubmit={(e) => handleSubmit(e, objective._id)}
-              aria-label="Acknowledge"
-              onClick={(event) => event.stopPropagation()}
-              onFocus={(event) => event.stopPropagation()}
-              control={<Checkbox />}
-            />
+        <div> 
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              // aria-controls="panel1bh-content"
+              aria-controls="additional-actions2-content"
+              id="panel1bh-header"
+            >
+              <FormControlLabel
+                aria-label="Acknowledge"
+                onClick={(event) => event.stopPropagation()}
+                onFocus={(event) => event.stopPropagation()}
+                control={<Checkbox />}
+              />
 
-            <TextField
-              id="outlined-basic"
-              label="Problem to solve"
-              variant="outlined"
-              fullWidth
-              type="text"
-              name="problem"
-              // onKeyDown={handleKeyDown}
-              onChange={handleChange}
-              value={form.problem}
-              placeholder="eg. I want to help fight poverty"
-            />
-          </AccordionSummary>
+              <TextField
+                id="outlined-basic"
+                label="Problem to solve"
+                variant="outlined"
+                fullWidth
+                type="text"
+                name="problem"
+                // onKeyDown={handleKeyDown}
+                onChange={handleChange}
+                value={form.problem}
+                placeholder="eg. I want to help fight poverty"
+              />
+            </AccordionSummary>
 
-          <AccordionDetails className="AccordionDetails">
-            <span className="ActionsModule">
-              <div className="accordionDetails">
-                {/* <TextField id="outlined-basic" label="Objective" variant="outlined"
+            <AccordionDetails className="AccordionDetails">
+              <span className="ActionsModule">
+                <div className="accordionDetails">
+                  {/* <TextField id="outlined-basic" label="Objective" variant="outlined"
               
                     type="text"
                     name="objectiveInput"
@@ -170,70 +158,73 @@ function EditObjective(props) {
                 
                 /> */}
 
-                <span className="keyResultBox">
+                  <span className="keyResultBox">
+                    <TextField
+                      id="outlined-basic"
+                      label="Key Result"
+                      variant="outlined"
+                      type="text"
+                      name="keyResult"
+                      placeholder="eg. Help 1x person out of poverty"
+                      // onKeyDown={handleKeyDown}
+                      onChange={handleChange}
+                      value={form.keyResult}
+                    />
+                  </span>
+
                   <TextField
                     id="outlined-basic"
-                    label="Key Result"
                     variant="outlined"
-                    type="text"
-                    name="keyResult"
-                    placeholder="eg. Help 1x person out of poverty"
+                    type="date"
+                    id="date"
+                    name="objectiveEndDate"
+                    label="Achieve by"
                     // onKeyDown={handleKeyDown}
                     onChange={handleChange}
-                    value={form.keyResult}
+                    value={form.objectiveEndDate}
                   />
-                </span>
+                  <br></br>
+                  <br></br>
 
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  type="date"
-                  id="date"
-                  name="objectiveEndDate"
-                  label="Achieve by"
-                  // onKeyDown={handleKeyDown}
-                  onChange={handleChange}
-                  value={form.objectiveEndDate}
-                />
-                <br></br>
-                <br></br>
-
-                <FormControl
-                  variant="outlined"
-                  className={classes.formControl}
-                  fullWidth
-                >
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Category
-                  </InputLabel>
-
-                  <Select
-                    name="category"
-                    onChange={handleChange}
-                    value={form.category}
-                    // fullWidth
-                    // labelId="demo-simple-select-outlined-label"
-                    label="Category"
-                    id="demo-simple-select-outlined"
+                  <FormControl
+                    variant="outlined"
+                    className={classes.formControl}
+                    fullWidth
+                    onSubmit={(e) => {
+                      console.log("SUKJHJKH");
+                    }}
                   >
-                    <MenuItem value={"Career"} name="Career">
-                      Career
-                    </MenuItem>
-                    <MenuItem value={"Passion"} name="Passion">
-                      Passion
-                    </MenuItem>
-                    <MenuItem value={"Relationship"} name="Relationship">
-                      Relationship
-                    </MenuItem>
-                    <MenuItem value={"Financial"} name="Financial">
-                      Financial
-                    </MenuItem>
-                    <MenuItem value={"Wellbeing"} name="Wellbeing">
-                      Wellbeing
-                    </MenuItem>
-                  </Select>
+                    <InputLabel id="demo-simple-select-outlined-label">
+                      Category
+                    </InputLabel>
 
-                  {/* <select
+                    <Select
+                      name="category"
+                      onChange={handleChange}
+                      value={form.category}
+                      // fullWidth
+                      // labelId="demo-simple-select-outlined-label"
+                      label="Category"
+                      id="demo-simple-select-outlined"
+                    >
+                      <MenuItem value={"Career"} name="Career">
+                        Career
+                      </MenuItem>
+                      <MenuItem value={"Passion"} name="Passion">
+                        Passion
+                      </MenuItem>
+                      <MenuItem value={"Relationship"} name="Relationship">
+                        Relationship
+                      </MenuItem>
+                      <MenuItem value={"Financial"} name="Financial">
+                        Financial
+                      </MenuItem>
+                      <MenuItem value={"Wellbeing"} name="Wellbeing">
+                        Wellbeing
+                      </MenuItem>
+                    </Select>
+
+                    {/* <select
                   name="visibility"
                   // onKeyDown={handleKeyDown}
                   value={form.visibility}
@@ -244,41 +235,39 @@ function EditObjective(props) {
                   <option name="Friends">Friends</option>
                 </select> */}
 
-                  <button className="ButtonEdit" type="submit" name="edit">
-                    Edit
-                  </button>
+                    <button className="ButtonEdit" type="button" onClick={handleSubmit}>
+                      Edit
+                    </button>
                   </FormControl>
 
-                <DeleteObjectives
-                  objectiveId={objectiveId}
-                  getObjectives={props.getObjectives}
-                ></DeleteObjectives>
-               
-              </div>
+                  <DeleteObjectives
+                    objectiveId={objectiveId}
+                    getObjectives={props.getObjectives}
+                  ></DeleteObjectives>
+                </div>
 
-              <Actions
-                className="AddActionsModule"
-                getObjectives={props.getObjectives}
-                objective={objective}
-              />
-              <div className="ActionPreview">
-                <ShowAction
+                <Actions
+                  className="AddActionsModule"
                   getObjectives={props.getObjectives}
                   objective={objective}
                 />
-              </div>
-            </span>
-          </AccordionDetails>
-        </Accordion>
+                <div className="ActionPreview">
+                  <ShowAction
+                    getObjectives={props.getObjectives}
+                    objective={objective}
+                  />
+                </div>
+              </span>
+            </AccordionDetails>
+          </Accordion>
 
-        {/* </form> */}
+          {/* </form> */}
 
-        <br />
-        </form>
+          <br />
+        </div>
 
         
       </div>
-      
     </>
   );
 }

@@ -4,16 +4,16 @@ import * as CONSTS from "../../utils/consts";
 import * as PATHS from "../../utils/paths";
 
 export default function DeleteAction(props) {
-  console.log("delete action props:", props);
+  // console.log("delete action props:", props);
   const actionId = props.actionId;
-  console.log("actionId:", actionId);
+  // console.log("actionId:", actionId);
 
   function deleteAction() {
     const accessToken = localStorage.getItem(CONSTS.ACCESS_TOKEN);
 
     ACTIONS_SERVICE.DELETE_ACTIONS({ actionId }, accessToken)
       .then((response) => {
-        console.log("response:", response);
+        // console.log("response:", response);
         props.getObjectives();
       })
       .catch((err) => {

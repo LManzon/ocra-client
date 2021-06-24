@@ -1,29 +1,24 @@
 import React from "react";
-import * as PATHS from "../../utils/paths";
-import { Redirect } from "react-router-dom";
-import * as CONSTS from "../../utils/consts";
-import * as PROFILE_SERVICE from "../../services/profile.service.js";
 import * as PROFILE_PICTURE from "../../services/profile.picture.js";
-import Objectives from "../ObjectivesActions/Objectives";
+import * as PROFILE_SERVICE from "../../services/profile.service.js";
+import * as CONSTS from "../../utils/consts";
 import "./Profile.css";
-import axios from "axios";
-import ProtectedRoute from "../../routing-components/ProtectedRoute";
 
 export default function ProfilePage(props) {
-  const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
-  const [displayUpdatePicture, setDisplayUpdatePicture] = React.useState(null);
+  // const [displayUpdateProfile, setDisplayUpdateProfile] = React.useState(false);
+  // const [displayUpdatePicture, setDisplayUpdatePicture] = React.useState(null);
 
   const { user, setUser, authenticate } = props;
 
-  function profileToggle() {
-    setDisplayUpdateProfile(!displayUpdateProfile);
-  }
+  // function profileToggle() {
+  //   setDisplayUpdateProfile(!displayUpdateProfile);
+  // }
 
-  function pictureToggle() {
-    setDisplayUpdatePicture(!displayUpdatePicture);
-  }
+  // function pictureToggle() {
+  //   setDisplayUpdatePicture(!displayUpdatePicture);
+  // }
 
-  function deleteProfile() {}
+  // function deleteProfile() {}
 
   return (
     <div className="profilePage">
@@ -31,7 +26,7 @@ export default function ProfilePage(props) {
         <img
           src={user.profilePic}
           width="200px"
-          alt={`Profile picture for ${user.name}`}
+          alt={`Profile for ${user.name}`}
           class="profilePic"
         />
         <h1 class="profileName">{user.name}</h1>
