@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
-import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
+import * as PATHS from "../../utils/paths";
+import "./Navbar.css";
 
 const Navbar = (props) => {
   const { user } = props;

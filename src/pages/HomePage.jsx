@@ -1,16 +1,10 @@
+import Fab from "@material-ui/core/Fab";
+import axios from "axios";
 import React from "react";
 import "../App.css";
 import Objectives from "../components/ObjectivesActions/Objectives";
 import ShowObjectives from "../components/ObjectivesActions/ShowObjectives";
-
-import Actions from "../components/ObjectivesActions/Actions";
-import axios from "axios";
 import * as CONSTS from "../utils/consts";
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import NavigationIcon from '@material-ui/icons/Navigation';
 
 function HomePage(props) {
   const { user } = props;
@@ -30,7 +24,7 @@ function HomePage(props) {
         },
       })
       .then((response) => {
-        console.log("response che palleeeeeeee!!!!!!:", response);
+        // ?/   console.log("response che palleeeeeeee!!!!!!:", response);
 
         setListOfObjectives(response.data);
       })
@@ -43,7 +37,7 @@ function HomePage(props) {
     getObjectives();
     return () => console.log("something");
   }, []);
-  console.log("newObj:", listOfObjectives);
+  //console.log("newObj:", listOfObjectives);
   return (
     <div className="App">
       {user ? (
@@ -64,16 +58,18 @@ function HomePage(props) {
             ) : null}
             <Fab
               className="fab"
-              color="primary" aria-label="add" onClick={addObjToggle}>+</Fab>
+              color="primary"
+              aria-label="add"
+              onClick={addObjToggle}
+            >
+              +
+            </Fab>
             {/* <Objectives user={user} getObjectives={getObjectives}></Objectives> */}
           </header>{" "}
         </>
-
       ) : (
-          <>
-
-          </>
-        )}
+        <></>
+      )}
     </div>
   );
 }
