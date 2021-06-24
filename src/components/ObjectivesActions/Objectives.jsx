@@ -143,7 +143,6 @@ function Objectives(props) {
             value={form.category}
             fullWidth
             // defaultValue="Career"
-           
           >
             <MenuItem value="Career" name="Career">
               Career
@@ -160,7 +159,7 @@ function Objectives(props) {
         </div>
         <br></br>
         <div>
-          {/* <Select
+          <Select
             style={{ width: 400 }}
             label="Shars"
             id="demo-simple-select-outlined"
@@ -168,7 +167,7 @@ function Objectives(props) {
             onChange={handleChange}
             value={form.visibility}
           >
-            <MenuItem value="Public" name="Public" >
+            <MenuItem value="Public" name="Public">
               Public
             </MenuItem>
             <MenuItem value="Career" name="Private">
@@ -177,7 +176,7 @@ function Objectives(props) {
             <MenuItem value="Friends" name="Friends">
               Friends
             </MenuItem>
-          </Select> */}
+          </Select>
         </div>{" "}
         <br></br>
         <Button

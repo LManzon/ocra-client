@@ -3,12 +3,12 @@ import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import * as ACTIONS_SERVICE from "../../services/actions.service";
 import Objectives from "./Objectives";
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
+import TextField from "@material-ui/core/TextField";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import NativeSelect from "@material-ui/core/NativeSelect";
 
 function Actions(props) {
   const { objective } = props;
@@ -47,23 +47,24 @@ function Actions(props) {
 
   return (
     <div>
-
       <form onSubmit={handleSubmit}>
-      <div className="taskNameAndStatus">
+        <div className="taskNameAndStatus">
+          <div>
+            <TextField
+              id="outlined-basic"
+              label="Task"
+              variant="outlined"
+              type="text"
+              name="action"
+              placeholder="I need to do this"
+              onChange={handleChange}
+              value={form.action}
+              fullWidth
+            />
+          </div>
 
-        <div>
-        <TextField id="outlined-basic"  label="Task" variant="outlined"               type="text"
-            name="action"
-            placeholder="I need to do this"
-            onChange={handleChange}
-            value={form.action}
-            fullWidth
-          />
-        </div>
-
-        <div>
-
-        {/* <FormControl variant="outlined" >
+          <div>
+            {/* <FormControl variant="outlined" >
 
 <InputLabel id="demo-simple-select-outlined-label">Status</InputLabel>
           <Select name="status" value={form.status} onChange={handleChange}>
@@ -72,13 +73,12 @@ function Actions(props) {
             <MenuItem value="Completed" name="Completed">Completed</MenuItem>
           </Select>
           </FormControl> */}
+          </div>
         </div>
-        </div>
-
-
-        <button  className="CreateTask">Create Task</button>
-        <br></br>        <br></br>
-
+        <button type="submit" className="CreateTask">
+          Create Task
+        </button>
+        <br></br> <br></br>
       </form>
     </div>
   );
