@@ -1,29 +1,46 @@
-.profilePage {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-
-.editProfile {
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-start; */
-  background-color: rgba(197, 197, 204, 0.466);
-  min-height: 100vh;
-  max-width: 50vh;
-  min-width: 100px;
-}
-
 .profilePic {
-  width: 100%;
-}
-
-.editForm {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 100px;
+  /* margin: 50px; */
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
 }
 
 .editValue {
-  margin: 15px;
+  height: 12vh;
+}
+
+#outlined-basic {
+  width: 50vh;
+}
+
+.editProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+  /* border-bottom: solid rgb(15, 41, 186) 1px; */
+  width: 50%;
+  border-bottom: solid 2px rgb(146, 45, 247);
+  padding: 20px;
+}
+
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.updatePic {
+  font-size: 15px;
+  color: rgb(177, 177, 181);
+  padding: 5px;
+  /* border-bottom: solid 1px grey; */
+}
+
+.editForm {
+  margin: 40px;
+}
+
+.textEditForm {
+  color: rgb(177, 177, 181);
 }

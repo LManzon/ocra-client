@@ -4,6 +4,8 @@ import React from "react";
 import "../App.css";
 import Objectives from "../components/ObjectivesActions/Objectives";
 import ShowObjectives from "../components/ObjectivesActions/ShowObjectives";
+import SignUp from "../pages/Signup";
+import Actions from "../components/ObjectivesActions/Actions";
 import * as CONSTS from "../utils/consts";
 
 function HomePage(props) {
@@ -68,7 +70,9 @@ function HomePage(props) {
           </header>{" "}
         </>
       ) : (
-        <></>
+        <>
+          <SignUp />
+        </>
       )}
     </div>
   );

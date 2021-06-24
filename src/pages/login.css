@@ -1,0 +1,27 @@
+.login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+  height: 50vh;
+}
+
+#textfield1 {
+  margin: 15px;
+}
+
+#textfield2 {
+  margin: 20px;
+}
+
+#input-email {
+  width: 50vh;
+}
+
+#input-password {
+  width: 50vh;
+}
+
+#title {
+  color: rgb(146, 45, 247);
+}
