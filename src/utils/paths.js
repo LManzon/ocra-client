@@ -7,6 +7,3 @@ export const OBJECTIVES_PAGE = "/objectives";
 export const ADD_OBJECTIVE = `${OBJECTIVES_PAGE}"/add`;
 export const EDIT_OBJECTIVE = `${OBJECTIVES_PAGE}/edit`;
 export const DELETE_OBJECTIVE = `${OBJECTIVES_PAGE}/delete`;
-// export const ACTIONS_PAGE = "/actions";
-// export const ADD_ACTIONS = `${ACTIONS_PAGE}"/add`;
-// export const EDIT_OBJECTIVE = `${ACTIONS_PAGE}/edit`;

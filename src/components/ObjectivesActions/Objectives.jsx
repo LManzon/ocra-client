@@ -73,25 +73,26 @@ function Objectives(props) {
 
   return (
     <div>
-      <h2>Add a new objective</h2>
+      <h2>Create a new Goal</h2>
 
       <form onSubmit={handleSubmit}>
         <div>
           <TextField
             id="outlined-basic"
-            label="Problem"
+            label="Problem you want solve"
             variant="outlined"
             className="textfield"
             type="text"
             name="problem"
-            placeholder="I have a problem X"
+            placeholder="eg. I can't afford to travel"
             onChange={handleChange}
             value={form.problem}
+            fullWidth
           />
         </div>
         <br></br>
         <div>
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             label="Objective"
             variant="outlined"
@@ -101,26 +102,25 @@ function Objectives(props) {
             placeholder="and I want to change Y"
             onChange={handleChange}
             value={form.objectiveInput}
-          />
+          /> */}
         </div>
-        <br></br>
         <div>
           <TextField
             id="outlined-basic"
             label="Key Result"
             variant="outlined"
             type="text"
-            style={{ width: 400 }}
             name="keyResult"
-            placeholder="X number/value for objective"
+            placeholder="eg. Generate $1000 for travel"
             onChange={handleChange}
             value={form.keyResult}
+            fullWidth
           />
         </div>
         <br></br>
         <div>
           <TextField
-            label="Date"
+            label="Achieve by"
             style={{ width: 400 }}
             defaultValue="2017-05-24"
             id="date"
@@ -138,10 +138,12 @@ function Objectives(props) {
         <div>
           <Select
             id="demo-simple-select-helper"
-            style={{ width: 400 }}
             name="category"
             onChange={handleChange}
             value={form.category}
+            fullWidth
+            // defaultValue="Career"
+           
           >
             <MenuItem value="Career" name="Career">
               Career
@@ -160,13 +162,13 @@ function Objectives(props) {
         <div>
           <Select
             style={{ width: 400 }}
-            labe="Shars"
+            label="Shars"
             id="demo-simple-select-outlined"
             name="visibility"
             onChange={handleChange}
             value={form.visibility}
           >
-            <MenuItem value="Public" name="Public">
+            <MenuItem value="Public" name="Public" >
               Public
             </MenuItem>
             <MenuItem value="Career" name="Private">

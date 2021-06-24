@@ -1,0 +1,27 @@
+.accordionDetails {
+  padding-left: 46px;
+}
+
+.keyResult {
+  padding-left: 20px;
+  width: 100%;
+}
+
+.ButtonEdit {
+  display: none;
+}
+
+.keyResultBox {
+  padding-right: 10px;
+}
+
+/* .CreateActionButton {
+  /* display: none; */
+
+.AllActions {
+  width: 100%;
+  display: flex;
+}
+.TaskName {
+  padding-right: 10px;
+}

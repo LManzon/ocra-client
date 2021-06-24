@@ -28,6 +28,7 @@ import { sizing } from '@material-ui/system';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Box from '@material-ui/core/Box';
+import './Objectives.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -137,8 +138,7 @@ function EditObjective(props) {
           <Accordion >
 
 
-            <Box fullWidth="True"
-            >
+           
               <AccordionSummary
 
                 expandIcon={<ExpandMoreIcon />}
@@ -154,26 +154,29 @@ function EditObjective(props) {
                 />
 
 
-                <TextField id="outlined-basic" label="Problem" variant="outlined"                   fullWidth
+                <TextField id="outlined-basic"  label="Problem to solve" variant="outlined"                   fullWidth
 
                   type="text"
                   name="problem"
                   // onKeyDown={handleKeyDown}
                   onChange={handleChange}
                   value={form.problem}
+                  placeholder="eg. I can't afford to travel"
 
                 />
 
 
 
               </AccordionSummary>
-            </Box>
+            
 
             <AccordionDetails>
+              
+              <div  className="accordionDetails">
               <Typography>
 
 
-                <TextField id="outlined-basic" label="Objective" variant="outlined"
+                {/* <TextField id="outlined-basic" label="Objective" variant="outlined"
               
                     type="text"
                     name="objectiveInput"
@@ -182,10 +185,11 @@ function EditObjective(props) {
                     value={form.objectiveInput}
                     fullWidth 
                 
-                />
+                /> */}
 
-
+<span  className="keyResultBox">
                 <TextField id="outlined-basic" label="Key Result" variant="outlined"
+                 
                   type="text"
                   name="keyResult"
                   placeholder="X number/value for objective"
@@ -194,29 +198,46 @@ function EditObjective(props) {
                   value={form.keyResult}
                 />
 
+</span>
+
                 <TextField id="outlined-basic" variant="outlined"
                   type="date"
                   id="date"
                   name="objectiveEndDate"
+                  label="Achieve by"
+
                   // onKeyDown={handleKeyDown}
                   onChange={handleChange}
                   value={form.objectiveEndDate}
                 />
+<br></br>
+<br></br>
 
-                <select
+<FormControl variant="outlined" className={classes.formControl} fullWidth>
+
+<InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
+
+                <Select
                   name="category"
-                  // onKeyDown={handleKeyDown}
                   onChange={handleChange}
                   value={form.category}
-                >
-                  <option name="Career">Career</option>
-                  <option name="Passion">Passion</option>
-                  <option name="Relationship">Relationship</option>
-                  <option name="Financial">Financial</option>
-                  <option name="Wellbeing">Wellbeing</option>
-                </select>
+                  // fullWidth
+                  // labelId="demo-simple-select-outlined-label"
+                  label="Category"
+                  id="demo-simple-select-outlined"
 
-                <select
+
+                  
+                >
+                  <MenuItem value={"Career"} name="Career">Career</MenuItem>
+                  <MenuItem value={"Passion"} name="Passion">Passion</MenuItem>
+                  <MenuItem value={"Relationship"} name="Relationship">Relationship</MenuItem>
+                  <MenuItem value={"Financial"} name="Financial">Financial</MenuItem>
+                  <MenuItem value={"Wellbeing"} name="Wellbeing">Wellbeing</MenuItem>
+                </Select>
+</FormControl>
+
+                {/* <select
                   name="visibility"
                   // onKeyDown={handleKeyDown}
                   value={form.visibility}
@@ -225,9 +246,9 @@ function EditObjective(props) {
                   <option name="Public">Public</option>
                   <option name="Private">Private</option>
                   <option name="Friends">Friends</option>
-                </select>
+                </select> */}
 
-                <button type="submit" name="edit">
+                <button className="ButtonEdit" type="submit" name="edit" >
                   Edit
         </button>
 
@@ -240,6 +261,7 @@ function EditObjective(props) {
                 <Actions  getObjectives={props.getObjectives} objective={objective} />
                 <ShowAction getObjectives={props.getObjectives} objective={objective} />
               </Typography>
+              </div>
             </AccordionDetails>
           </Accordion>
 
