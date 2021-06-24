@@ -4,12 +4,26 @@ import * as CONSTS from "../../utils/consts";
 import * as OBJECTIVE_SERVICE from "../../services/objective.service";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import NativeSelect from "@material-ui/core/NativeSelect";
+import InputBase from "@material-ui/core/InputBase";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
       width: "25ch",
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
     },
   },
 }));
@@ -48,16 +62,20 @@ function Objectives(props) {
         console.error(err.response);
       });
   }
+
   const classes = useStyles();
+
   return (
     <div>
-      <h1>Add a new objective</h1>
+      <h2>Add a new objective</h2>
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Problem</label>
-          <input
-            class="mdc-text-field__input"
+          <TextField
+            id="outlined-basic"
+            label="Problem"
+            variant="outlined"
+            style={{ width: 400 }}
             type="text"
             name="problem"
             placeholder="I have a problem X"
@@ -65,10 +83,14 @@ function Objectives(props) {
             value={form.problem}
           />
         </div>
+        <br></br>
         <div>
-          {/* <label>Enter your Objective</label> */}
           <TextField
+            id="outlined-basic"
+            label="Objective"
+            variant="outlined"
             type="text"
+            style={{ width: 400 }}
             name="objectiveInput"
             placeholder="and I want to change Y"
             onChange={handleChange}
@@ -78,52 +100,91 @@ function Objectives(props) {
             variant="outlined"
           />
         </div>
+        <br></br>
         <div>
-          <label>Key Results</label>
-          <input
+          <TextField
+            id="outlined-basic"
+            label="Key Result"
+            variant="outlined"
             type="text"
+            style={{ width: 400 }}
             name="keyResult"
             placeholder="X number/value for objective"
             onChange={handleChange}
             value={form.keyResult}
           />
         </div>
+        <br></br>
         <div>
-          <label>Achieve by</label>
-          <input
+          <TextField
+            label="Birthday"
+            style={{ width: 400 }}
+            defaultValue="2017-05-24"
+            id="date"
             type="date"
             name="objectiveEndDate"
             onChange={handleChange}
             value={form.objectiveEndDate}
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
         </div>
-
+        <br></br>
         <div>
-          <label>Choose the category</label>
-
-          <select name="category" onChange={handleChange} value={form.category}>
-            <option name="Career">Career</option>
-            <option name="Passion">Passion</option>
-            <option name="Relationship">Relationship</option>
-            <option name="Financial">Financial</option>
-            <option name="Wellbeing">Wellbeing</option>
-          </select>
+          <Select
+            id="demo-simple-select-helper"
+            style={{ width: 400 }}
+            name="category"
+            onChange={handleChange}
+            value={form.category}
+          >
+            <MenuItem value="Career" name="Career">
+              Career
+            </MenuItem>
+            <MenuItem value="Passion" name="Passion">
+              Passion
+            </MenuItem>
+            <MenuItem value="Relationship" name="Relationship">
+              Relationship
+            </MenuItem>
+            <MenuItem value="Financial">Financial</MenuItem>
+            <MenuItem value="Wellbeing">Wellbeing</MenuItem>
+          </Select>
         </div>
+        <br></br>
         <div>
-          <label>Want to share this with others to get help & advise?</label>
-          <select
+          <Select
+            style={{ width: 400 }}
+            labe="Shars"
+            id="demo-simple-select-outlined"
             name="visibility"
             onChange={handleChange}
             value={form.visibility}
           >
-            <option name="Public">Public</option>
-            <option name="Private">Private</option>
-            <option name="Friends">Friends</option>
-          </select>
-        </div>
-
-        <button type="submit">Create Goal</button>
+            <MenuItem value="Public" name="Public">
+              Public
+            </MenuItem>
+            <MenuItem value="Career" name="Private">
+              Private
+            </MenuItem>
+            <MenuItem value="Friends" name="Friends">
+              Friends
+            </MenuItem>
+          </Select>
+        </div>{" "}
+        <br></br>
+        <Button
+          style={{ width: 410, height: 45 }}
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
+          Create
+        </Button>
       </form>
+      <br></br>
     </div>
   );
 }
