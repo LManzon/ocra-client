@@ -8,6 +8,14 @@ import Actions from "../../components/ObjectivesActions/Actions";
 import ShowAction from "./ShowActions";
 import ShowObjectives from "./ShowObjectives";
 import DeleteAction from "./DeleteAction";
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import './Objectives.css'
+
 
 function EditAction(props) {
   console.log("edit Action props:", props);
@@ -41,22 +49,28 @@ function EditAction(props) {
       });
   }
   return (
-    <form onSubmit={(e) => handleSubmit(e, props._id)}>
-      <input
+   <div>
+   <form onSubmit={(e) => handleSubmit(e, props._id)}>
+        <TextField id="outlined-basic"  label="Task" variant="outlined"               type="text"
         type="text"
         name="action"
         onChange={handleChange}
         value={form.action}
       />
-      <select name="status" value={form.status} onChange={handleChange}>
-        <option name="Public">Not Started</option>
-        <option name="Private">In-progress</option>
-        <option name="Friends">Completed</option>
-      </select>
+        <FormControl variant="outlined"  id="outlined-basic" >
+<InputLabel id="demo-simple-select-outlined-label" >Status</InputLabel>
+      <Select name="status" /*value={form.status}*/ onChange={handleChange} >
+        <MenuItem value="Not Started" name="Not Started">Not Started</MenuItem>
+        <MenuItem value="In-Progress" name="In-Progress">In-progress</MenuItem>
+        <MenuItem value="Completed "name="Completed">Completed</MenuItem>
+      </Select>
 
-      <button type="submit">Create Goal</button>
+
+      <button className="EditAction" type="submit">Edit Action</button>
+      </FormControl>
       <DeleteAction actionId={actionId} getObjectives={props.getObjectives} />
     </form>
+    </div>
   );
 }
 

@@ -15,8 +15,13 @@
   padding-right: 10px;
 }
 
-/* .CreateActionButton {
-  /* display: none; */
+/* .EditAction {
+  display: none;
+} */
+
+/* .CreateTask {
+  display: none;
+} */
 
 .AllActions {
   width: 100%;
@@ -24,4 +29,18 @@
 }
 .TaskName {
   padding-right: 10px;
+}
+
+.AddActionsModule {
+  padding-left: 2000px;
+}
+
+.taskNameAndStatus {
+  padding-top: 10px;
+  padding-left: 45px;
+}
+
+.ActionPreview {
+  display: flex;
+  padding-left: 45px;
 }

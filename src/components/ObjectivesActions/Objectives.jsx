@@ -84,7 +84,7 @@ function Objectives(props) {
             className="textfield"
             type="text"
             name="problem"
-            placeholder="eg. I can't afford to travel"
+            placeholder="eg. I want to fight poverty"
             onChange={handleChange}
             value={form.problem}
             fullWidth
@@ -111,7 +111,7 @@ function Objectives(props) {
             variant="outlined"
             type="text"
             name="keyResult"
-            placeholder="eg. Generate $1000 for travel"
+            placeholder="eg. Help 1x out of poverty"
             onChange={handleChange}
             value={form.keyResult}
             fullWidth
@@ -160,7 +160,7 @@ function Objectives(props) {
         </div>
         <br></br>
         <div>
-          <Select
+          {/* <Select
             style={{ width: 400 }}
             label="Shars"
             id="demo-simple-select-outlined"
@@ -177,7 +177,7 @@ function Objectives(props) {
             <MenuItem value="Friends" name="Friends">
               Friends
             </MenuItem>
-          </Select>
+          </Select> */}
         </div>{" "}
         <br></br>
         <Button
