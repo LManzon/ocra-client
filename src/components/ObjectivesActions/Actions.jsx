@@ -53,12 +53,8 @@ function Actions(props) {
       <div className="taskNameAndStatus">
 
         <div>
-{/* 
-        <FormControlLabel
-              onSubmit={(e) => handleSubmit(e, objective._id)}
-             
-            /> */}
 
+  
         <TextField id="outlined-basic"  label="Task" variant="outlined"               type="text"
             name="action"
             placeholder="I need to do this"
