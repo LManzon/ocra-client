@@ -55,7 +55,7 @@ export default function Signup({ authenticate, history }) {
       }
       // successful signup
       localStorage.setItem(CONSTS.ACCESS_TOKEN, res.data.accessToken);
-      authenticate(res.data.user);
+     authenticate(res.data.user);
       history.push(PATHS.HOMEPAGE);
     });
   }
