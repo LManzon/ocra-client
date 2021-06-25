@@ -5,7 +5,7 @@ import "../App.css";
 import Objectives from "../components/ObjectivesActions/Objectives";
 import ShowObjectives from "../components/ObjectivesActions/ShowObjectives";
 
-import Actions from "../components/ObjectivesActions/Actions";
+// import Actions from "../components/ObjectivesActions/Actions";
 import * as CONSTS from "../utils/consts";
 
 function HomePage(props) {

@@ -5,9 +5,9 @@ import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import SaveIcon from "@material-ui/icons/Save";
+// import SaveIcon from "@material-ui/icons/Save";
 import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
+// import Icon from "@material-ui/core/Icon";
 import "./signup.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +55,7 @@ export default function Signup({ authenticate, history }) {
       }
       // successful signup
       localStorage.setItem(CONSTS.ACCESS_TOKEN, res.data.accessToken);
-     authenticate(res.data.user);
+      authenticate(res.data.user);
       history.push(PATHS.HOMEPAGE);
     });
   }
